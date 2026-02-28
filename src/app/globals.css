@@ -7,10 +7,16 @@
 
 /* Force light mode: Remove dark mode override */
 
-body {
+body,
+.light body {
   background: #faf6f6;
   color: #171717;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.dark body {
+  background: #181824;
+  color: #ededed;
 }
 
 /* Glassmorphic utility for backgrounds */

@@ -1,206 +1,281 @@
-'use client';
-import styled from 'styled-components';
+"use client";
+
+import React from "react";
+import styled from "styled-components";
+import { useTheme } from '../../../theme-provider';
 
 const ThemeToggleTile = () => {
-    return (
-        <StyledWrapper className="w-full h-full flex items-center justify-center">
-            <div className="toggle-container">
-                <input id="theme-switch" type="checkbox" className="hidden-input" />
-                <div className="app-preview">
-                    <div className="phone-body">
-                        {/* Status Bar */}
-                        <div className="status-bar">
-                            {/* <div className="time">4:20</div> */}
-                            {/* <div className="status-icons">
-                                <div className="network-icon" />
-                                <div className="battery-icon" />
-                            </div> */}
-                        </div>
-
-                        {/* Main Content */}
-                        <div className="main-content">
-                            <div className="visual-circle">
-                                <div className="crescent-moon" />
-                            </div>
-
-                            <label htmlFor="theme-switch" className="toggle-label">
-                                <div className="sliding-knob" />
-                                <div className="label-text">
-                                    <p className="light-text">Light</p>
-                                    <p className="dark-text">Dark</p>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
+  const { theme, toggleTheme } = useTheme();
+  return (
+    <StyledWrapper>
+      <div>
+        <input
+          id="switch"
+          type="checkbox"
+          checked={theme === 'dark'}
+          onChange={toggleTheme}
+        />
+        <div className="app">
+          <div className="body">
+            <div className="phone">
+              <div className="menu">
+                {/* <div className="time">4:20</div> */}
+                {/* <div className="icons">
+                  <div className="network" />
+                  <div className="battery" />
+                </div> */}
+              </div>
+              <div className="content">
+                <div className="circle">
+                  <div className="crescent" />
                 </div>
+                <label htmlFor="switch">
+                  <div className="toggle" />
+                  <div className="names">
+                    <p className="light">Light</p>
+                    <p className="dark">Dark</p>
+                  </div>
+                </label>
+              </div>
             </div>
-        </StyledWrapper>
-    );
+          </div>
+        </div>
+      </div>
+    </StyledWrapper>
+  );
 };
 
 const StyledWrapper = styled.div`
-  /* Container Scale */
-  .toggle-container {
-    scale: 0.9; /* Adjust this to make the phone UI fit your tile size */
+  /* GENERAL */
+  .credit {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    color: white;
   }
-
-  .phone-body {
+  .credit a {
+    color: inherit;
+  }
+  .main-circle {
+    width: 40rem;
+    height: 40rem;
+    border-radius: 100%;
+    background: linear-gradient(40deg, #FF0080,#FF8C00 70%);
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    -webkit-transform: translate(-50%, -70%);
+    -ms-transform: translate(-50%, -70%);
+    transform: translate(-50%, -70%)
+  }
+  .phone {
     position: relative;
-    width: 19rem;
-    height: 19rem;
-    background-color: #ffffff;
-    box-shadow: 0 4px 35px rgba(0, 0, 0, 0.05);
-    border-radius: 3rem;
+    z-index: 2;
+    width: 18rem;
+    height: 18rem;
+    background-color: inherit;
+    -webkit-box-shadow: 0 4px 35px rgba(0,0,0,.1);
+    box-shadow: 0 4px 35px rgba(0,0,0,.1);
+    border-radius: 40px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
-    transition: all 0.5s ease;
-    overflow: hidden;
   }
-
-  /* Status Bar */
-  .status-bar {
-    font-size: 0.75rem;
-    opacity: 0.5;
-    padding: 1rem 1.5rem;
+  .menu {
+    font-size: 80%;
+    opacity: .4;
+    padding: .8rem 1.8rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
   }
-
-  .status-icons {
+  .icons {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    gap: 6px;
+    margin-top: .5rem;
   }
-
-  .battery-icon {
-    width: 0.8rem;
-    height: 0.4rem;
+  .battery {
+    width: .85rem;
+    height: .45rem;
     background-color: black;
-    border-radius: 1px;
   }
-
-  .network-icon {
+  .network {
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 0 6px 7px 6px;
+    border-width: 0 6.8px 7.2px 6.8px;
     border-color: transparent transparent black transparent;
+    -webkit-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
     transform: rotate(135deg);
+    margin: .12rem .5rem;
   }
-
-  /* Center Content */
-  .main-content {
+  .content {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     margin: auto;
-    width: 75%;
-    transform: translateY(-5%);
+    text-align: center;
+    width: 70%;
+    -webkit-transform: translateY(5%);
+    -ms-transform: translateY(5%);
+    transform: translateY(5%);
   }
-
-  .visual-circle {
+  .circle {
     position: relative;
     border-radius: 100%;
-    width: 6.5rem;
-    height: 6.5rem;
-    background: linear-gradient(40deg, #FF0080, #FF8C00 70%);
-    margin: 0 auto;
-    transition: background 0.5s ease;
+    width: 8rem;
+    height: 8rem;
+    background: linear-gradient(40deg, #FF0080,#FF8C00 70%);
+    margin: auto;
   }
-
-  .crescent-moon {
+  .crescent {
     position: absolute;
     border-radius: 100%;
     right: 0;
-    width: 5rem;
-    height: 5rem;
+    width: 6rem;
+    height: 6rem;
     background: white;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
     transform: scale(0);
+    -webkit-transform-origin: top right;
+    -ms-transform-origin: top right;
     transform-origin: top right;
-    transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -webkit-transition: -webkit-transform .6s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: -webkit-transform .6s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: transform .6s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: transform .6s cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform .6s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
-
-  /* Toggle Switch */
-  .toggle-label {
+  label, .toggle {
+    height: 2.8rem;
+    border-radius: 100px;
+  }
+  label {
     width: 100%;
-    height: 3rem;
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0,0,0,.1);
     border-radius: 100px;
     position: relative;
-    margin-top: 1.5rem;
+    margin: 1.8rem 0 4rem 0;
     cursor: pointer;
-    display: block;
   }
-
-  .sliding-knob {
+  .toggle {
     position: absolute;
     width: 50%;
-    height: 100%;
     background-color: #fff;
-    border-radius: 100px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-box-shadow: 0 2px 15px rgba(0,0,0,.15);
+    box-shadow: 0 2px 15px rgba(0,0,0,.15);
+    -webkit-transition: -webkit-transform .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: -webkit-transform .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform .3s cubic-bezier(0.25, 0.46, 0.45, 0.94), -webkit-transform .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
-
-  .label-text {
-    font-size: 0.8rem;
-    font-weight: 800;
+  .names {
+    font-size: 90%;
+    font-weight: bolder;
     color: black;
-    width: 70%;
-    margin: 0 15%;
-    height: 100%;
+    width: 65%;
+    margin-left: 17.5%;
+    margin-top: 6.5%;
     position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
-    align-items: center;
-    pointer-events: none;
-    z-index: 2;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
-
-  .dark-text {
-    opacity: 0.4;
+  .dark {
+    opacity: .5;
   }
-
-  /* --- Logic for Checked State --- */
-  .hidden-input {
+  .mark {
+    border-radius: 100px;
+    background-color: black;
+  }
+  .time {
+    color: black;
+  }
+  [type="checkbox"] {
     display: none;
   }
-
-  .hidden-input:checked + .app-preview .sliding-knob {
+  [type="checkbox"]:checked + .app .toggle {
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
     transform: translateX(100%);
     background-color: #34323D;
   }
-
-  .hidden-input:checked + .app-preview .phone-body {
-    background-color: #26242E;
-  }
-
-  .hidden-input:checked + .app-preview .time,
-  .hidden-input:checked + .app-preview .light-text,
-  .hidden-input:checked + .app-preview .dark-text {
-    color: white;
+  [type="checkbox"]:checked + .app .dark {
     opacity: 1;
+    color: white;
   }
-
-  .hidden-input:checked + .app-preview .light-text {
-    opacity: 0.4;
+  [type="checkbox"]:checked + .app .light {
+    opacity: 1;
+    color: white;
   }
-
-  .hidden-input:checked + .app-preview .visual-circle {
-    background: linear-gradient(40deg, #8983F7, #A3DAFB 70%);
+  [type="checkbox"]:checked + .app .body {
+    background-color: #26242E;
+    color: white;
   }
-
-  .hidden-input:checked + .app-preview .crescent-moon {
+  [type="checkbox"]:checked + .app .crescent {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1);
     background: #26242E;
   }
-
-  .hidden-input:checked + .app-preview .battery-icon {
+  [type="checkbox"]:checked + .app .circle {
+    background: linear-gradient(40deg, #8983F7, #A3DAFB 70%);
+  }
+  [type="checkbox"]:checked + .app .main-circle {
+    background: linear-gradient(40deg, #8983F7, #A3DAFB 70%);
+  }
+  [type="checkbox"]:checked + .time {
+    color: white;
+  }
+  [type="checkbox"]:checked + .app .body .phone .menu .time {
+    color: white;
+  }
+  [type="checkbox"]:checked + .app .body .phone .menu .icons .network {
+    border-color: transparent transparent white transparent;
+  }
+  [type="checkbox"]:checked + .app .body .phone .menu .icons .battery {
     background-color: white;
   }
-
-  .hidden-input:checked + .app-preview .network-icon {
-    border-color: transparent transparent white transparent;
+  [type="checkbox"]:checked + .app .body {
+    border-radius: 40px;
+    ;
+  }
+  .menu {
+    font-size: 80%;
+    opacity: .4;
+    padding: .8rem 1.8rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
   }
 `;
 
