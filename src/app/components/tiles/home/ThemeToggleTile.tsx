@@ -25,7 +25,7 @@ const ThemeToggleTile = () => {
         />
         <div className="app">
           <div className="body">
-            <div className="phone">
+            {/* <div className="phone"> */}
               <div className="menu">
                 {/* <div className="time">4:20</div> */}
                 {/* <div className="icons">
@@ -45,7 +45,7 @@ const ThemeToggleTile = () => {
                   </div>
                 </label>
               </div>
-            </div>
+            {/* </div> */}
           </div>
         </div>
       </div>
@@ -65,8 +65,8 @@ const StyledWrapper = styled.div`
     color: inherit;
   }
   .main-circle {
-    width: 40rem;
-    height: 40rem;
+    width: 100%;
+    height: 100%;
     border-radius: 100%;
     background: linear-gradient(40deg, #FF0080,#FF8C00 70%);
     position: absolute;
@@ -79,8 +79,8 @@ const StyledWrapper = styled.div`
   .phone {
     position: relative;
     z-index: 2;
-    width: 18rem;
-    height: 18rem;
+    width: 100%;
+    height: 100%;
     background-color: inherit;
     -webkit-box-shadow: 0 4px 35px rgba(0,0,0,.1);
     box-shadow: 0 4px 35px rgba(0,0,0,.1);

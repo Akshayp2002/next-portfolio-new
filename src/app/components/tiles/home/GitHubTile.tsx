@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function GitHubTile() {
     return (
-        <div className="w-full h-full bg-gradient-to-tr from-[#161618] to-[#252a32] p-8 relative flex items-center justify-center">
+        <div className="w-full h-full bg-gradient-to-tr from-[#161618] to-[#252a32] p-8 relative flex items-center justify-center dark:bg-[#0d1117]">
             {/* Arrow in bottom-left corner of card */}
             <a href="https://github.com/Akshayp2002" target="_blank">
                 <div
@@ -13,10 +13,10 @@ export default function GitHubTile() {
                     >
                         <g id="Group_7" data-name="Group 7" transform="translate(5.363 5.325)">
                             <path id="Path_10" data-name="Path 10" d="M14.581,7.05,7.05,14.581"
-                                transform="translate(-7.05 -7.012)" fill="none" stroke="#0D1117" strokeLinecap="round"
+                                transform="translate(-7.05 -7.012)" fill="none" stroke="#0d1117" strokeLinecap="round"
                                 strokeLinejoin="round" strokeWidth="1.5"></path>
                             <path id="Path_11" data-name="Path 11" d="M10,7l5.287.037.038,5.287"
-                                transform="translate(-7.756 -7)" fill="none" stroke="#0D1117" strokeLinecap="round"
+                                transform="translate(-7.756 -7)" fill="none" stroke="#0d1117" strokeLinecap="round"
                                 strokeLinejoin="round" strokeWidth="1.5"></path>
                         </g>
                         <path id="Path_12" data-name="Path 12" d="M0,0H18.256V18.256H0Z" fill="none"></path>
@@ -25,7 +25,7 @@ export default function GitHubTile() {
             </a>
             {/* Centered GitHub icon */}
             <div className="flex items-center justify-center w-full h-full">
-                <div className="bg-black rounded-[30px] flex items-center justify-center p-20 h-[280px] hover:shadow-lg">
+                <div className="rounded-[30px] flex items-center justify-center p-20 h-[280px] hover:shadow-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" height="160" width="160" viewBox="-74.4 -120.90175 644.8 725.4105"
                         fill="#ffffff">
                         <path
