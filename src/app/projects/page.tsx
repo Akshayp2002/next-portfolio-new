@@ -7,7 +7,7 @@ export default function ProjectsPage() {
         <div className="min-h-screen py-5 flex justify-center">
             <div className="grid grid-cols-1 md:grid-cols-2 grid-flow-row-dense max-w-[1200px] w-full">
                 {projectsData.map((project, index) => (
-                    <BentoTile key={index} className="h-full md:h-[300px] ">
+                    <BentoTile key={index} className="h-full md:h-75">
                         <ProjectTile project={project} />
                     </BentoTile>
                 ))}

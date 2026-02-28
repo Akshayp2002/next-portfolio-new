@@ -6,7 +6,7 @@ export const projectsData = [
     image: "/projects/portfolio.webp",
     github: "https://github.com/Akshayp2002/personal-portfolio-angular",
     view: "https://devakshay.app",
-    status: false,
+    workStatus: true,
     date: "Augest - 2024",
     demo: false,
     personal: true,
@@ -36,7 +36,7 @@ export const projectsData = [
     image: "/projects/retro-radio.png",
     github: "https://github.com/Akshayp2002/radio",
     view: "https://radio-devakshay.vercel.app",
-    status: true,
+    workStatus: true,
     date: "Feb - 2026",
     demo: false,
     personal: true,
@@ -66,7 +66,7 @@ export const projectsData = [
     image: "/projects/minimal-portfolio.png",
     github: "https://github.com/Akshayp2002/nextjs-portfolio",
     view: "https://devakshaynew.vercel.app",
-    status: false,
+    workStatus: false,
     date: "December - 2025",
     demo: false,
     personal: true,
@@ -92,7 +92,7 @@ export const projectsData = [
     image: "/projects/hinez.webp",
     github: false,
     view: "https://myhinez.com/",
-    status: false,
+    workStatus: false,
     date: "May - 2024",
     demo: false,
     tech: [
@@ -125,7 +125,7 @@ export const projectsData = [
     image: "/projects/rugr.webp",
     github: false,
     view: "https://rugr.com",
-    status: false,
+    workStatus: false,
     date: "February - 2025",
     demo: false,
     tech: [
@@ -158,7 +158,7 @@ export const projectsData = [
     image: "/projects/itrend-sp.webp",
     github: false,
     view: false,
-    status: true,
+    workStatus: true,
     date: "May - 2025",
     demo: false,
     personal: false,
@@ -192,7 +192,7 @@ export const projectsData = [
     image: "/projects/homelabs.webp",
     github: "https://github.com/Akshayp2002/homelab/tree/main",
     view: false,
-    status: true,
+    workStatus: true,
     date: "January - 2025",
     demo: false,
     personal: true,
@@ -226,7 +226,7 @@ export const projectsData = [
     image: "/projects/quotes.webp",
     github: "https://github.com/Akshayp2002/quote-generator",
     view: "https://timspass.vercel.app/quotes",
-    status: false,
+    workStatus: false,
     date: "Augest - 2024",
     demo: true,
     tech: [
@@ -255,7 +255,7 @@ export const projectsData = [
     image: "/projects/qrcode-page.webp",
     github: "https://github.com/Akshayp2002/quote-generator",
     view: "https://timspass.vercel.app/qrcode",
-    status: false,
+    workStatus: false,
     date: "Augest - 2024",
     demo: true,
     tech: [
@@ -280,11 +280,11 @@ export const projectsData = [
   {
     name: "Instagram",
     description:
-      "A clone of Instagram, the popular social media platform, allowing users to browse, post, and interact with content in a visually appealing and user-friendly environment.",
+      "A clone of Instagram, the popular social media platform, allowing users to interact with content in a visually appealing and user-friendly environment.",
     image: "/projects/instagram.webp",
     github: "https://github.com/Akshayp2002/instagram-angular",
     view: "https://devinstagram.vercel.app",
-    status: true,
+    workStatus: true,
     date: "July - 2024",
     demo: true,
     tech: [
@@ -304,10 +304,6 @@ export const projectsData = [
         name: "Typescript",
         image: "/tech/typescript.svg",
       },
-      {
-        name: "ChatGPT",
-        image: "/tech/openai.svg",
-      },
     ],
   },
   {
@@ -317,7 +313,7 @@ export const projectsData = [
     image: "/projects/netflix-cole.webp",
     github: "https://github.com/Akshayp2002/netflix-clone-angular",
     view: "https://netflix-clone-angular2.vercel.app",
-    status: false,
+    workStatus: false,
     date: "June - 2024",
     demo: true,
     tech: [
@@ -346,11 +342,11 @@ export const projectsData = [
   {
     name: "Swiftrevel",
     description:
-      "Swiftrevel champions frictionless fintech, integrating flawlessly with your existing tools and software to eliminate data silos and streamline your workflow.",
+      "Swiftrevel fintech, integrating flawlessly with your existing tools and software to and streamline your workflow.",
     image: "/projects/swiftrevel.webp",
     github: false,
     view: "https://swiftrevel.com",
-    status: false,
+    workStatus: false,
     date: "May - 2024",
     demo: false,
     tech: [
@@ -367,10 +363,6 @@ export const projectsData = [
         image: "/tech/nextjs2.svg",
       },
       {
-        name: "Apidog",
-        image: "/tech/apidog-icon.svg",
-      },
-      {
         name: "Mysql",
         image: "/tech/mysql.svg",
       },
@@ -379,11 +371,11 @@ export const projectsData = [
   {
     name: "Farmers Copper",
     description:
-      "Farmer’s Copper Ltd. extends its services throughout many industries. Provide the raw copper alloy materials in various standard shapes as well as custom cut copper alloys.",
+      "Farmer’s Copper Ltd. extends its services throughout many industries. Provide the raw copper alloy materials.",
     image: "/projects/farmers-copper.webp",
     github: false,
     view: false,
-    status: false,
+    workStatus: false,
     date: "November - 2023",
     demo: false,
     tech: [
@@ -408,11 +400,11 @@ export const projectsData = [
   {
     name: "Student 360",
     description:
-      "A final year project: A student management portal designed to efficiently manage attendance, grades, student details, and other academic information.",
+      "A final year project: A student management portal designed to manage attendance, grades, student details, and other academic details.",
     image: "/projects/student360.webp",
     github: "https://github.com/Akshayp2002/Student-360",
     view: false,
-    status: false,
+    workStatus: false,
     date: "April - 2022",
     demo: false,
     tech: [

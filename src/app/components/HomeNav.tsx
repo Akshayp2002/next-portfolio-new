@@ -30,17 +30,17 @@ export default function HomeNav() {
                         fill="url(#akshayGradient)"
                         style={{ letterSpacing: "-0.05em" }}
                     >
-                        akshay
+                        Akshay
                     </text>
                 </svg>
             </div>
 
             {/* 2. Centered Pill Menu - reduced width on mobile */}
             <nav className="w-full flex justify-center">
-                <ul className="relative flex items-center p-2 bg-[#eeeeee] dark:bg-[#0d1117] rounded-full ring-2 ring-transparent dark:ring-gray-700 md:max-w-[400px] max-w-[310px] w-full">
+                <ul className="relative flex items-center gap-1 p-2 bg-[#eeeeee] dark:bg-[#0d1117] rounded-full ring-2 ring-transparent dark:ring-gray-700 md:max-w-[400px] max-w-[310px] w-full">
                     {/* Animated active indicator */}
                     <div
-                        className="absolute top-2 left-2 h-[calc(100%-1rem)] rounded-full bg-white z-0 transition-all duration-300 dark:bg-[#0d1117] text-white"
+                        className="absolute top-2 h-[calc(100%-1rem)] rounded-full bg-white dark:bg-gray-700 z-0 transition-all duration-300  text-white"
                         style={{
                             width: `calc(100%/${links.length})`,
                             transform: `translateX(${links.findIndex(link => {
@@ -57,7 +57,7 @@ export default function HomeNav() {
                                 <Link
                                     href={url}
                                     className={`md:px-4 py-2 rounded-full font-semibold text-sm transition-all duration-200 font-[geometric,sans-serif] w-full text-center
-                                        ${isActive ? "text-gray-900 dark:text-white dark:bg-gray-700" : "text-gray-600 hover:text-gray-900"}`}
+                                        ${isActive ? "text-gray-900 dark:text-white dark:bg-gray-700" : "text-gray-600 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white"}`}
                                 >
                                     {link}
                                 </Link>

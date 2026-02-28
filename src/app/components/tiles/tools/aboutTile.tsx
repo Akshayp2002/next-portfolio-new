@@ -12,7 +12,7 @@ export default function aboutTile() {
                     Good Afternoon!
                 </div> */}
             </div>
-            <p className="mt-3 text-gray-500 text-base leading-relaxed max-w-[500px]">
+            <p className="text-gray-500 text-base leading-relaxed max-w-[500px]">
                 I actively use a diverse set of cutting-edge technologies and tools in my daily work. From
                 modern frameworks and
                 languages to powerful platforms, my toolkit ensures high-quality and efficient development. 🚀 🌟
