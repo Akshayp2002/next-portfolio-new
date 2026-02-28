@@ -45,13 +45,13 @@ export default function HomeNav() {
                             width: `calc(100%/${links.length})`,
                             transform: `translateX(${links.findIndex(link => {
                                 const url = `/${link.toLowerCase()}`;
-                                return pathname === url || (pathname === "/" && link === "Home");
+                                return pathname === url;
                             }) * 93}%)`,
                         }}
                     />
                     {links.map((link, idx) => {
                         const url = `/${link.toLowerCase()}`;
-                        const isActive = pathname === url || (pathname === "/" && link === "Home");
+                        const isActive = pathname === url;
                         return (
                             <li key={link} className="relative z-10 w-full flex justify-center">
                                 <Link
