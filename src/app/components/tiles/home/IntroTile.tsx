@@ -2,7 +2,7 @@ import Image from "next/image";
 // components/tiles/home/IntroTile.tsx
 export default function IntroTile() {
     return (
-        <div className="flex flex-col justify-center h-full px-10 lg:px-16 dark:bg-[#0d1117]">
+        <div className="flex flex-col justify-center h-full px-10 lg:px-16 bg-white dark:bg-[#0d1117] rounded-4xl dark:ring-2 dark:ring-gray-700">
             <div className="flex items-center gap-6 mb-2">
                 {/* Placeholder for 3D Avatar Image */}
                 <div className="relative w-24 h-24">

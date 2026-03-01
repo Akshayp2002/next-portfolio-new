@@ -1,19 +1,28 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-export function SortableItem({ id, children }: { id: string; children: React.ReactNode }) {
+interface SortableItemProps {
+    id: string;
+    className?: string;
+    children: React.ReactNode;
+}
+
+export function SortableItem({ id, className = "", children }: SortableItemProps) {
     const {
         attributes,
         listeners,
         setNodeRef,
         transform,
         transition,
-        isDragging // Destructure this to style the placeholder
+        isDragging
     } = useSortable({ id });
 
     const style = {
-        transform: CSS.Transform.toString(transform),
+        // Use Translate for smoother grid movement without affecting scaling
+        transform: CSS.Translate.toString(transform),
         transition,
+        // Ensure the active item stays on top during movement
+        zIndex: isDragging ? 50 : 0,
     };
 
     return (
@@ -22,17 +31,17 @@ export function SortableItem({ id, children }: { id: string; children: React.Rea
             style={style}
             {...attributes}
             {...listeners}
-            className="touch-none" // Prevents mobile scrolling issues when grabbing
+            className={`touch-none relative outline-none ${className}`}
         >
-            {isDragging ? (
-                // This renders in the original spot while the DragOverlay follows the cursor
-                <div
-                    className="w-full h-full md:h-75 bg-gray-50 dark:bg-gray-700 rounded-4xl opacity-80 transition-all duration-200"
-                    style={{ minHeight: "100px" }}
-                />
-            ) : (
-                children
-            )}
+            {/* We wrap children in a div and apply opacity here.
+               When isDragging is false, opacity is strictly 1 (100% color).
+            */}
+            <div
+                className="w-full h-full transition-opacity duration-200"
+                style={{ opacity: isDragging ? 0.4 : 1 }}
+            >
+                {children}
+            </div>
         </div>
     );
 }

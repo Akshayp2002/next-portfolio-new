@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function GitHubTile() {
     return (
-        <div className="w-full h-full bg-[#0d1117] p-8 relative flex items-center justify-center">
+        <div className="w-full h-full bg-[#0d1117] p-8 relative flex items-center justify-center dark:ring-2 dark:ring-gray-700 rounded-4xl">
             {/* Arrow in bottom-left corner of card */}
             <a href="https://github.com/Akshayp2002" target="_blank">
                 <div

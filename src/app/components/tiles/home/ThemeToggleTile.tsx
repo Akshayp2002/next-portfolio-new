@@ -24,7 +24,7 @@ const ThemeToggleTile = () => {
           onChange={toggleTheme}
         />
         <div className="app">
-          <div className="body">
+          <div className="body bg-white rounded-4xl dark:ring-2 dark:ring-gray-700">
             {/* <div className="phone"> */}
               <div className="menu">
                 {/* <div className="time">4:20</div> */}
