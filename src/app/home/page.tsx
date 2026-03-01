@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import {
     DndContext,
-    closestCenter,
+    closestCorners,
     DragOverlay,
     useDndContext,
     PointerSensor,
@@ -11,6 +11,7 @@ import {
     useSensors,
     DragStartEvent,
     DragEndEvent,
+    DragOverEvent,
     defaultDropAnimationSideEffects,
 } from "@dnd-kit/core";
 import {
@@ -19,8 +20,8 @@ import {
     rectSortingStrategy,
 } from "@dnd-kit/sortable";
 import {
-    restrictToFirstScrollableAncestor,
     restrictToWindowEdges,
+    restrictToParentElement,
 } from "@dnd-kit/modifiers";
 import { SortableItem } from "@/components/SortableItem";
 
@@ -88,8 +89,7 @@ function DraggedItemOverlay({ id }: { id: string }) {
 
     return (
         <div style={{ width: activeNodeRect.width, height: activeNodeRect.height }}>
-            {/* The overlay is the "colored" version being dragged */}
-            <BentoTile className="w-full h-full cursor-grabbin rounded-4xl">
+            <BentoTile className="w-full h-full cursor-grabbing rounded-4xl shadow-2xl scale-105">
                 {tile.content}
             </BentoTile>
         </div>
@@ -113,16 +113,25 @@ export default function HomeInner() {
         setActiveId(event.active.id.toString());
     };
 
-    const handleDragEnd = (event: DragEndEvent) => {
+    // THIS IS THE KEY: We update the items state WHILE dragging 
+    // so items slide into position.
+    const handleDragOver = (event: DragOverEvent) => {
         const { active, over } = event;
+        if (!over) return;
 
-        if (over && active.id !== over.id) {
+        const activeId = active.id.toString();
+        const overId = over.id.toString();
+
+        if (activeId !== overId) {
             setItems((prevItems) => {
-                const oldIndex = prevItems.indexOf(active.id.toString());
-                const newIndex = prevItems.indexOf(over.id.toString());
+                const oldIndex = prevItems.indexOf(activeId);
+                const newIndex = prevItems.indexOf(overId);
                 return arrayMove(prevItems, oldIndex, newIndex);
             });
         }
+    };
+
+    const handleDragEnd = () => {
         setActiveId(null);
     };
 
@@ -134,13 +143,14 @@ export default function HomeInner() {
                 <DndContext
                     id="bento-grid-dnd"
                     sensors={sensors}
-                    collisionDetection={closestCenter}
+                    collisionDetection={closestCorners} // Corners is better for grid shifting
                     onDragStart={handleDragStart}
+                    onDragOver={handleDragOver} // Moving reorder logic here
                     onDragEnd={handleDragEnd}
-                    modifiers={[restrictToFirstScrollableAncestor, restrictToWindowEdges]}
+                    modifiers={[restrictToWindowEdges, restrictToParentElement]}
                 >
                     <SortableContext items={items} strategy={rectSortingStrategy}>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-flow-row-dense gap-4 w-full">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-flow-row-dense gap-4 w-full auto-rows-min">
                             {items.map((id) => {
                                 const tile = TILE_CONFIG[id];
                                 return (
