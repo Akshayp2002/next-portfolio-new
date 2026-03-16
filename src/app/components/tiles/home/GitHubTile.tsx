@@ -5,18 +5,18 @@ export default function GitHubTile() {
     return (
         <div className="w-full h-full bg-[#0d1117] p-8 relative flex items-center justify-center dark:ring-2 dark:ring-gray-700 rounded-4xl">
             {/* Arrow in bottom-left corner of card */}
-            <a href="https://github.com/Akshayp2002" target="_blank">
+            <a href="https://github.com/Akshayp2002" target="_blank" rel="noopener noreferrer">
                 <div
-                    className="bg-white w-10 h-10 rounded-full absolute bottom-0 left-0 m-4 flex justify-center items-center hover:ring-4 ring-gray-200 dark:ring-gray-400 hover:transition duration-400 ease-in-out"
+                    className="bg-white dark:bg-[#0d1117] text-[#0d1117] dark:text-white w-10 h-10 rounded-full absolute bottom-0 left-0 m-4 flex justify-center items-center ring-2 ring-gray-200 dark:ring-gray-700 hover:ring-4 hover:ring-gray-300 dark:hover:ring-gray-500 transition duration-300 ease-in-out"
                 >
                     <svg id="Arrow.7" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 18.256 18.256"
                     >
                         <g id="Group_7" data-name="Group 7" transform="translate(5.363 5.325)">
                             <path id="Path_10" data-name="Path 10" d="M14.581,7.05,7.05,14.581"
-                                transform="translate(-7.05 -7.012)" fill="none" stroke="#0d1117" strokeLinecap="round"
+                                transform="translate(-7.05 -7.012)" fill="none" stroke="currentColor" strokeLinecap="round"
                                 strokeLinejoin="round" strokeWidth="1.5"></path>
                             <path id="Path_11" data-name="Path 11" d="M10,7l5.287.037.038,5.287"
-                                transform="translate(-7.756 -7)" fill="none" stroke="#0d1117" strokeLinecap="round"
+                                transform="translate(-7.756 -7)" fill="none" stroke="currentColor" strokeLinecap="round"
                                 strokeLinejoin="round" strokeWidth="1.5"></path>
                         </g>
                         <path id="Path_12" data-name="Path 12" d="M0,0H18.256V18.256H0Z" fill="none"></path>

@@ -31,6 +31,8 @@ import TechStackTile from "@/components/tiles/home/TechStackTile";
 import ThemeToggleTile from "@/components/tiles/home/ThemeToggleTile";
 import MapTile from "@/components/tiles/home/MapTile";
 import SocialTile from "@/components/tiles/home/SocialsTile";
+import ProjectDetailsTile from "@/components/tiles/home/ProjectDetailsTile";
+import BusinessPreviewTile from "@/components/tiles/home/BusinessPreviewTile";
 
 const TILE_CONFIG: Record<string, { className: string; content: React.ReactNode }> = {
     intro: { className: "md:col-span-2 lg:col-span-2 h-75", content: <IntroTile /> },
@@ -56,18 +58,12 @@ const TILE_CONFIG: Record<string, { className: string; content: React.ReactNode 
     },
     portrait: {
         className: "col-span-1 lg:row-span-2 h-155",
-        content: (
-            <div className="bg-[#0093a7] w-full h-full p-8 rounded-4xl text-white">Project Portrait</div>
-        ),
+        content: <ProjectDetailsTile />,
     },
     github: { className: "col-span-1 h-75", content: <GitHubTile /> },
     business: {
         className: "md:col-span-2 h-75",
-        content: (
-            <div className="bg-[#d41df0] w-full h-full p-8 rounded-4xl text-white">
-                Business App Preview
-            </div>
-        ),
+        content: <BusinessPreviewTile />,
     },
     contact: {
         className: "md:col-span-2 h-75",
