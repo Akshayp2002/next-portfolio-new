@@ -13,6 +13,7 @@
     "@dnd-kit/modifiers": "^9.0.0",
     "@dnd-kit/sortable": "^10.0.0",
     "@supabase/supabase-js": "^2.99.2",
+    "contentful": "^11.10.6",
     "leaflet": "^1.9.4",
     "next": "16.1.6",
     "postcss": "^8.5.6",

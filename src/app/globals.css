@@ -107,3 +107,12 @@ textarea,
   animation: modalContentIn 260ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
