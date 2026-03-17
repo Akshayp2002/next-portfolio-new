@@ -39,10 +39,6 @@ export const careersData: CareerEntry[] = [
         name: "iTrend Commerce",
         image: "/projects/itrend-sp.webp",
       },
-      {
-        name: "Seller Growth Suite",
-        image: "/projects/student360.webp",
-      },
     ],
     skills: [
       { name: "Laravel", icon: "/tech/laravel.svg" },
@@ -72,12 +68,16 @@ export const careersData: CareerEntry[] = [
       "I built and maintained full-stack modules, developed reusable UI patterns, and delivered integrations for third-party services. I worked closely with product and design teams to ship reliable features quickly while keeping the codebase maintainable.",
     projects: [
       {
+        name: "MyHinez",
+        image: "/projects/hinez.webp",
+      },
+      {
         name: "Swiftrevel",
         image: "/projects/swiftrevel.webp",
       },
       {
-        name: "HomeLabs",
-        image: "/projects/homelabs.webp",
+        name: "Rugr Fintech",
+        image: "/projects/rugr.webp",
       },
     ],
     skills: [
@@ -106,12 +106,12 @@ export const careersData: CareerEntry[] = [
       "I worked on core web features, bug fixes, data validation flows, and production support. This role strengthened my fundamentals in backend architecture, debugging, and clean implementation of client requirements.",
     projects: [
       {
-        name: "Operations Dashboard",
-        image: "/projects/portfolio.webp",
+        name: "Farmers Copper",
+        image: "/projects/farmers-copper.webp",
       },
       {
-        name: "Internal Tracker",
-        image: "/projects/qrcode-page.webp",
+        name: "4M HUB",
+        image: "/projects/4mhub.png",
       },
     ],
     skills: [

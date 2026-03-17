@@ -14,6 +14,15 @@ import { createPortal } from "react-dom";
 import Image from "next/image";
 import { careersData, type CareerEntry, type CareerProject } from "@/components/tiles/about/careers";
 
+type TestimonialItem = {
+  id: number;
+  quote: string;
+  name: string;
+  position: string;
+  company: string;
+  rating: number;
+};
+
 const skills = ["Software Developer", "Laravel", "PHP", "Tailwind"];
 
 const education = [
@@ -36,30 +45,6 @@ const education = [
     degree: "SSLC",
     institute: "GHSS Balussery",
     period: "2016 - 2017",
-  },
-];
-
-const testimonials = [
-  {
-    quote:
-      "I really appreciate your technical skills. You understand concepts quickly and solve problems in a smart way.",
-    name: "Rahul K",
-    company: "Cloudrevel Innovations Pvt Ltd",
-    featured: false,
-  },
-  {
-    quote:
-      "You always share knowledge and support the team. You handled important tasks with ownership and consistency.",
-    name: "Jeevitha N",
-    company: "Cloudrevel Innovations Pvt Ltd",
-    featured: false,
-  },
-  {
-    quote:
-      "Akshay is technically strong, learns fast, and adapts quickly. His problem-solving mindset stands out.",
-    name: "Minmitha",
-    company: "Dreams Technologies Pvt Ltd",
-    featured: true,
   },
 ];
 
@@ -110,7 +95,7 @@ function ModalPortal({ children }: { children: React.ReactNode }) {
   return createPortal(children, document.body);
 }
 
-export default function AboutContent() {
+export default function AboutContent({ testimonials = [] }: { testimonials?: TestimonialItem[] }) {
   const [isTimelineOpen, setIsTimelineOpen] = useState(false);
   const [selectedCareer, setSelectedCareer] = useState<CareerEntry | null>(null);
   const [projectCarousel, setProjectCarousel] = useState<{
@@ -121,6 +106,7 @@ export default function AboutContent() {
 
   const previewExperience = useMemo(() => careersData.slice(0, 2), []);
   const previewEducation = useMemo(() => education.slice(0, 2), []);
+  const testimonialsToRender = testimonials;
 
   useEffect(() => {
     const isAnyModalOpen = Boolean(selectedCareer || projectCarousel || isTimelineOpen);
@@ -254,22 +240,24 @@ export default function AboutContent() {
             </p>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {testimonials.map((item) => (
+              {testimonialsToRender.map((item) => (
                 <article
-                  key={`${item.name}-${item.company}`}
-                  className="h-full rounded-3xl border border-gray-200/80 bg-[#f8fafc] p-4 dark:border-gray-700 dark:bg-[#111821] sm:p-5"
+                  key={item.id}
+                  className="h-full rounded-3xl border border-gray-200/80 bg-[#f8fafc] p-4 dark:border-gray-700 dark:bg-[#111821] sm:p-5 flex flex-col"
                 >
                   <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#94a3b8] ring-1 ring-gray-200 dark:bg-[#0d1117] dark:text-[#cbd5e1] dark:ring-gray-600">
                     <FaQuoteLeft className="h-4 w-4" />
                   </div>
-                  <p className="mt-4 text-sm leading-6 text-gray-700 dark:text-gray-200 sm:text-base sm:leading-7">
+                  <p className="mt-4 text-xs leading-5 text-gray-700 dark:text-gray-200 sm:text-sm sm:leading-6">
                     {item.quote}
                   </p>
-                  <div className="mt-5">
-                    <h3 className="text-base font-semibold tracking-tight font-sans text-gray-900 dark:text-white sm:text-lg">
+                  <div className="mt-auto pt-1">
+                    <h3 className="text-sm font-semibold tracking-tight font-sans text-gray-900 dark:text-white sm:text-base">
                       - {item.name}
                     </h3>
-                    <p className="mt-1 text-xs text-gray-500 dark:text-gray-400 sm:text-sm">{item.company}</p>
+                    <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400 sm:text-xs">
+                      {item.position} • {item.company}
+                    </p>
                   </div>
                 </article>
               ))}
