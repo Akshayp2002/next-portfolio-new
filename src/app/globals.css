@@ -6,6 +6,24 @@
   --foreground: #090C10;
 }
 
+* {
+  cursor: url("https://res.cloudinary.com/daily-now/image/upload/s--Q3mKadUU--/f_auto/v1730101530/public/Bd%20cursor"), auto;
+}
+
+.cursor-grab,
+.cursor-grab * {
+  cursor: -webkit-grab !important;
+  cursor: grab !important;
+}
+
+.cursor-grabbing,
+.cursor-grabbing *,
+.active\:cursor-grabbing:active,
+.active\:cursor-grabbing:active * {
+  cursor: url("https://img.icons8.com/fluency/48/gripping-hand.png") 12 6, -webkit-grabbing !important;
+  cursor: url("https://img.icons8.com/fluency/48/gripping-hand.png") 12 6, grabbing !important;
+}
+
 /* Force light mode: Remove dark mode override */
 
 body,
@@ -13,11 +31,24 @@ body,
   background: #F7F2F2;
   color: #171717;
   font-family: Arial, Helvetica, sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .dark body {
   background: #090c10;
   color: #ededed;
+}
+
+input,
+textarea,
+[contenteditable="true"] {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
 /* Glassmorphic utility for backgrounds */

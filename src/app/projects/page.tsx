@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { DndContext, closestCenter, DragOverlay } from "@dnd-kit/core";
 import { arrayMove, SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
 import { useSensor, useSensors, PointerSensor } from "@dnd-kit/core";
@@ -12,8 +12,19 @@ import { projectsData } from "@/components/tiles/projects/projects";
 export default function ProjectPage() {
     const [items, setItems] = useState(projectsData.map(p => p.name));
     const [activeId, setActiveId] = useState<string | null>(null);
+    const [isMobile, setIsMobile] = useState(true);
 
     const gridRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia("(max-width: 767px)");
+        const updateIsMobile = () => setIsMobile(mediaQuery.matches);
+
+        updateIsMobile();
+        mediaQuery.addEventListener("change", updateIsMobile);
+
+        return () => mediaQuery.removeEventListener("change", updateIsMobile);
+    }, []);
 
     const sensors = useSensors(
         useSensor(PointerSensor, {
@@ -59,7 +70,7 @@ export default function ProjectPage() {
                                 if (!project) return null;
 
                                 return (
-                                    <SortableItem key={name} id={name}>
+                                    <SortableItem key={name} id={name} disabled={isMobile}>
                                         <BentoTile className="w-full h-full md:h-75 transition-all duration-200">
                                             <ProjectTile project={project} />
                                         </BentoTile>
@@ -71,6 +82,7 @@ export default function ProjectPage() {
 
                     <DragOverlay>
                         {activeId ? (() => {
+                            if (isMobile) return null;
                             const activeProject = projectsData.find(p => p.name === activeId);
                             if (!activeProject) return null;
                             return (
