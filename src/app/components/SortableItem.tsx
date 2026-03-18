@@ -16,9 +16,9 @@ export function SortableItem({
     const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id, disabled });
 
     const style = {
-        transform: CSS.Translate.toString(transform),
+        transform: transform ? `translate3d(${isDragging ? transform.x : 0}px, ${transform.y}px, 0)` : undefined,
         transition,
-        zIndex: isDragging ? 0 : 1,
+        zIndex: isDragging ? 50 : 1,
     };
 
     return (
@@ -27,15 +27,14 @@ export function SortableItem({
             style={style}
             {...(!disabled ? attributes : {})}
             {...(!disabled ? listeners : {})}
-            className={`${!disabled ? "touch-none" : ""} relative outline-none rounded-4xl ${className}`}
+            className={`
+                ${!disabled ? "touch-none cursor-grab active:cursor-grabbing" : ""} 
+                relative outline-none rounded-4xl bg-white dark:bg-zinc-900 border border-transparent 
+                ${isDragging ? "shadow-2xl z-50 ring-2 ring-blue-500 ring-opacity-50 opacity-90 scale-105" : "hover:border-gray-200 dark:hover:border-zinc-800 transition-colors"} 
+                ${className}
+            `}
         >
-            {/* GRAY PLACEHOLDER */}
-            {isDragging && (
-                <div className="absolute inset-0 bg-gray-200/50 dark:bg-zinc-800/50 rounded-4xl border-2 border-dashed border-gray-400/50 z-0" />
-            )}
-
-            {/* MAP/CONTENT: Fully hidden during drag to prevent Leaflet WebGL crashes */}
-            <div className={`w-full h-full transition-opacity duration-300 ${isDragging ? "opacity-0" : "opacity-100"}`}>
+            <div className={`w-full h-full rounded-4xl overflow-hidden pointer-events-auto`}>
                 {children}
             </div>
         </div>

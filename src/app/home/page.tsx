@@ -3,26 +3,24 @@
 import { useState, useEffect, useRef } from "react";
 import {
     DndContext,
-    closestCorners,
-    DragOverlay,
-    useDndContext,
+    closestCenter,
     PointerSensor,
     useSensor,
     useSensors,
     DragStartEvent,
     DragEndEvent,
     DragOverEvent,
-    defaultDropAnimationSideEffects,
+    MeasuringStrategy,
 } from "@dnd-kit/core";
+import {
+    restrictToParentElement,
+} from "@dnd-kit/modifiers";
 import {
     arrayMove,
     SortableContext,
     rectSortingStrategy,
 } from "@dnd-kit/sortable";
-import {
-    restrictToWindowEdges,
-    restrictToParentElement,
-} from "@dnd-kit/modifiers";
+
 import { SortableItem } from "@/components/SortableItem";
 
 import IntroTile from "@/components/tiles/home/IntroTile";
@@ -75,22 +73,6 @@ const TILE_CONFIG: Record<string, { className: string; content: React.ReactNode 
     },
 };
 
-function DraggedItemOverlay({ id }: { id: string }) {
-    const { activeNodeRect } = useDndContext();
-    const tile = TILE_CONFIG[id];
-    if (!tile || !activeNodeRect) return null;
-
-    return (
-        <div
-            style={{ width: activeNodeRect.width, height: activeNodeRect.height }}
-            className="w-full h-full cursor-grabbing rounded-4xl overflow-hidden"
-        >
-            <div className="w-full h-full rounded-4xl overflow-hidden">
-                {tile.content}
-            </div>
-        </div>
-    );
-}
 
 export default function HomeInner() {
     const [items, setItems] = useState(() => Object.keys(TILE_CONFIG));
@@ -126,16 +108,16 @@ export default function HomeInner() {
     const handleDragOver = (event: DragOverEvent) => {
         const { active, over } = event;
         if (!over) return;
+        
+        const activeIdStr = active.id.toString();
+        const overIdStr = over.id.toString();
 
-        const activeId = active.id.toString();
-        const overId = over.id.toString();
-
-        if (activeId !== overId) {
+        if (activeIdStr !== overIdStr) {
             const now = Date.now();
             if (now - lastUpdate.current > 150) {
                 setItems((prev) => {
-                    const oldIndex = prev.indexOf(activeId);
-                    const newIndex = prev.indexOf(overId);
+                    const oldIndex = prev.indexOf(activeIdStr);
+                    const newIndex = prev.indexOf(overIdStr);
                     return arrayMove(prev, oldIndex, newIndex);
                 });
                 lastUpdate.current = now;
@@ -143,27 +125,31 @@ export default function HomeInner() {
         }
     };
 
-    const handleDragEnd = () => {
+    const handleDragEnd = (event: DragEndEvent) => {
         setActiveId(null);
-        lastUpdate.current = 0;
     };
 
     if (!isMounted) return null;
 
     return (
-        <main className="min-h-screen py-5 flex justify-center overflow-hidden">
+        <main className="min-h-screen py-5 flex justify-center w-full">
             <div className="max-w-[1200px] w-full px-4 relative">
                 <DndContext
                     id="final-stable-bento"
                     sensors={sensors}
-                    collisionDetection={closestCorners}
+                    collisionDetection={closestCenter}
                     onDragStart={handleDragStart}
                     onDragOver={handleDragOver}
                     onDragEnd={handleDragEnd}
-                    modifiers={[restrictToWindowEdges, restrictToParentElement]}
+                    measuring={{
+                        droppable: {
+                            strategy: MeasuringStrategy.Always,
+                        },
+                    }}
+                    modifiers={[restrictToParentElement]}
                 >
                     <SortableContext items={items} strategy={rectSortingStrategy}>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-flow-row-dense gap-4 w-full auto-rows-min">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full auto-rows-min">
                             {items.map((id) => (
                                 <SortableItem key={id} id={id} className={TILE_CONFIG[id].className} disabled={isMobile}>
                                     {TILE_CONFIG[id].content}
@@ -171,10 +157,6 @@ export default function HomeInner() {
                             ))}
                         </div>
                     </SortableContext>
-
-                    <DragOverlay adjustScale={false}>
-                        {!isMobile && activeId ? <DraggedItemOverlay id={activeId} /> : null}
-                    </DragOverlay>
                 </DndContext>
             </div>
         </main>
