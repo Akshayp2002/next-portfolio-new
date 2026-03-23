@@ -100,7 +100,10 @@ export default function ProjectPage() {
                             const activeProject = projectsData.find(p => p.name === activeId);
                             if (!activeProject) return null;
                             return (
-                                <BentoTile className="w-full h-full md:h-75 scale-105 shadow-[0_0_30px_rgba(0,0,0,0.1)] dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] pointer-events-none overflow-hidden hover:scale-105">
+                                <BentoTile 
+                                    className="w-full h-full md:h-75 pointer-events-none"
+                                    innerClassName="scale-105 shadow-[0_0_30px_rgba(0,0,0,0.1)] dark:shadow-[0_0_30px_rgba(255,255,255,0.05)]"
+                                >
                                     <ProjectTile project={activeProject} />
                                 </BentoTile>
                             );
