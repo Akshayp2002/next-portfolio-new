@@ -16,10 +16,24 @@ export function SortableItem({
     const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id, disabled });
 
     const style = {
-        transform: transform ? `translate3d(${isDragging ? transform.x : 0}px, ${transform.y}px, 0)` : undefined,
-        transition,
-        zIndex: isDragging ? 50 : 1,
+        transform: transform && !isDragging ? `translate3d(0px, ${transform.y}px, 0)` : undefined,
+        transition: isDragging ? undefined : transition,
+        zIndex: isDragging ? 0 : 1,
     };
+
+    if (isDragging) {
+        return (
+            <div
+                ref={setNodeRef}
+                style={style}
+                className={`relative rounded-4xl bg-white/40 dark:bg-zinc-800/50 border-2 border-dashed border-white/60 dark:border-zinc-700/50 ${className}`}
+            >
+                <div className="opacity-0 pointer-events-none w-full h-full">
+                    {children}
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div
@@ -29,12 +43,11 @@ export function SortableItem({
             {...(!disabled ? listeners : {})}
             className={`
                 ${!disabled ? "touch-none cursor-grab active:cursor-grabbing" : ""} 
-                relative outline-none rounded-4xl bg-white dark:bg-zinc-900 border border-transparent 
-                ${isDragging ? "shadow-2xl z-50 ring-2 ring-blue-500 ring-opacity-50 opacity-90 scale-105" : "hover:border-gray-200 dark:hover:border-zinc-800 transition-colors"} 
+                relative outline-none rounded-4xl transition-colors
                 ${className}
             `}
         >
-            <div className={`w-full h-full rounded-4xl overflow-hidden pointer-events-auto`}>
+            <div className={`w-full h-full rounded-4xl pointer-events-auto`}>
                 {children}
             </div>
         </div>

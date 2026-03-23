@@ -14,9 +14,14 @@ export default function IntroTile() {
             </div>
 
             <h1 className="text-md font-bold text-gray-800 leading-tight">
-                I'm <span className="underline decoration-blue-500 decoration-4 underline-offset-4">Akshay</span>, a Software developer from Kerala...
+                I'm{" "}
+                <span className="relative inline-block whitespace-nowrap z-10">
+                    <span className="relative z-20">Akshay</span>
+                    <img src="/line-1.svg" alt="underline" className="absolute left-0 w-full top-[-16%] -z-10 pointer-events-none" />
+                </span>
+                , a Software developer from Kerala...
             </h1>
-            <p className="mt-3 text-gray-500 text-base leading-relaxed max-w-[500px]">
+            <p className="mt-1 text-gray-500 text-base leading-relaxed max-w-[500px]">
                 Building clean, efficient web solutions with PHP, Laravel & Tailwind CSS. I love solving problems through code and creating tools that matter.
             </p>
         </div>

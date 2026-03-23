@@ -20,6 +20,7 @@ import {
     SortableContext,
     rectSortingStrategy,
 } from "@dnd-kit/sortable";
+import { DragOverlay } from "@dnd-kit/core";
 
 import { SortableItem } from "@/components/SortableItem";
 
@@ -46,6 +47,10 @@ const TILE_CONFIG: Record<string, { className: string; content: React.ReactNode 
         className: "col-span-1 h-75",
         content: <SocialTile />,
     },
+    portrait: {
+        className: "col-span-1 lg:row-span-2 h-155",
+        content: <ProjectDetailsTile />,
+    },
     blog: {
         className: "md:col-span-2 h-75",
         content: (
@@ -53,10 +58,6 @@ const TILE_CONFIG: Record<string, { className: string; content: React.ReactNode 
                 Blog Journey Content
             </div>
         ),
-    },
-    portrait: {
-        className: "col-span-1 lg:row-span-2 h-155",
-        content: <ProjectDetailsTile />,
     },
     github: { className: "col-span-1 h-75", content: <GitHubTile /> },
     business: {
@@ -157,6 +158,13 @@ export default function HomeInner() {
                             ))}
                         </div>
                     </SortableContext>
+                    <DragOverlay>
+                        {activeId ? (
+                            <div className={`w-full h-full rounded-4xl bg-white dark:bg-zinc-900 shadow-[0_0_30px_rgba(0,0,0,0.1)] dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] overflow-hidden scale-105 pointer-events-none`}>
+                                {TILE_CONFIG[activeId].content}
+                            </div>
+                        ) : null}
+                    </DragOverlay>
                 </DndContext>
             </div>
         </main>

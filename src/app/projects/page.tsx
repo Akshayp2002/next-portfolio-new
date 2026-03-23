@@ -15,6 +15,7 @@ export default function ProjectPage() {
     const [isMobile, setIsMobile] = useState(true);
 
     const gridRef = useRef<HTMLDivElement>(null);
+    const lastUpdate = useRef<number>(0);
 
     useEffect(() => {
         const mediaQuery = window.matchMedia("(max-width: 767px)");
@@ -38,16 +39,28 @@ export default function ProjectPage() {
         setActiveId(event.active.id?.toString());
     };
 
-    const handleDragEnd = (event: import("@dnd-kit/core").DragEndEvent) => {
+    const handleDragOver = (event: import("@dnd-kit/core").DragOverEvent) => {
         const { active, over } = event;
-        setActiveId(null);
+        if (!over) return;
+        
+        const activeIdStr = active.id.toString();
+        const overIdStr = over.id.toString();
 
-        // Only reorder the actual state when the drag ends
-        if (over?.id && items.includes(over.id.toString()) && active.id !== over.id) {
-            const oldIndex = items.indexOf(active.id.toString());
-            const newIndex = items.indexOf(over.id.toString());
-            setItems(arrayMove(items, oldIndex, newIndex));
+        if (activeIdStr !== overIdStr) {
+            const now = Date.now();
+            if (now - lastUpdate.current > 150) {
+                setItems((prev) => {
+                    const oldIndex = prev.indexOf(activeIdStr);
+                    const newIndex = prev.indexOf(overIdStr);
+                    return arrayMove(prev, oldIndex, newIndex);
+                });
+                lastUpdate.current = now;
+            }
         }
+    };
+
+    const handleDragEnd = (event: import("@dnd-kit/core").DragEndEvent) => {
+        setActiveId(null);
     };
 
     return (
@@ -57,6 +70,7 @@ export default function ProjectPage() {
                     sensors={sensors}
                     collisionDetection={closestCenter}
                     onDragStart={handleDragStart}
+                    onDragOver={handleDragOver}
                     onDragEnd={handleDragEnd}
                     modifiers={[restrictToFirstScrollableAncestor]}
                 >
@@ -86,7 +100,7 @@ export default function ProjectPage() {
                             const activeProject = projectsData.find(p => p.name === activeId);
                             if (!activeProject) return null;
                             return (
-                                <BentoTile className="w-full h-full md:h-75 scale-105  cursor-grabbing">
+                                <BentoTile className="w-full h-full md:h-75 scale-105 shadow-[0_0_30px_rgba(0,0,0,0.1)] dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] pointer-events-none overflow-hidden hover:scale-105">
                                     <ProjectTile project={activeProject} />
                                 </BentoTile>
                             );
