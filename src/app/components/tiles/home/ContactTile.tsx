@@ -45,7 +45,7 @@ export default function ContactTile() {
                         </svg>
                     </div>
                     {/* Text part (appears on hover) */}
-                    <span className="font-semibold text-[13px] whitespace-nowrap opacity-0 transition-opacity duration-200 group-hover/btn:opacity-100 delay-75 pr-4">
+                    <span className="text-muted text-[13px] whitespace-nowrap opacity-0 transition-opacity duration-200 group-hover/btn:opacity-100 delay-75 pr-4">
                         Contact Me
                     </span>
                 </div>
@@ -62,9 +62,7 @@ export default function ContactTile() {
                         <div className="absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b from-black/[0.04] to-transparent dark:from-black/30"></div>
                     </div>
 
-                    {/* MAIL CARDS 
-                        - Now individually animate gracefully OUT of the envelope on hover!
-                    */}
+                    {/* MAIL CARDS */}
                     
                     {/* Purple / Blue Card (Back) */}
                     <div className="absolute left-[20px] bottom-[80px] z-10 h-[115px] w-[160px] -rotate-[6deg] rounded-[16px] bg-gradient-to-br from-[#6f5ef5] to-[#5a48ea] px-4 py-3 text-white shadow-[0_5px_15px_rgba(111,94,245,0.4)] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-[15px] group-hover:-translate-x-3 group-hover:-rotate-[10deg]">
@@ -85,7 +83,7 @@ export default function ContactTile() {
                             <span className="font-bold tracking-tighter">Inbox</span>
                         </div>
                         <div className="absolute bottom-3 left-4">
-                            <div className="text-[12px] text-white/80 mb-0.5 font-medium">yoursite.com</div>
+                            <div className="text-[12px] text-white/80 mb-0.5 font-medium">devakshay.app</div>
                             <div className="text-[26px] font-semibold leading-none tracking-tight">hello@</div>
                         </div>
                     </div>
@@ -107,7 +105,7 @@ export default function ContactTile() {
 
                     {/* ENVELOPE FRONT FLAPS (Z-40) */}
                     <div className="absolute bottom-0 w-[320px] h-[170px] z-40 pointer-events-none drop-shadow-[0_-8px_20px_rgba(0,0,0,0.06)] dark:drop-shadow-[0_-8px_15px_rgba(0,0,0,0.4)]">
-                        <div className="relative w-full h-[170px] rounded-b-[24px] overflow-hidden">
+                        <div className="relative w-full h-[170px] rounded-b-[24px] overflow-hidden shadow-[0_15px_25px_-5px_rgba(0,0,0,0.12),0_8px_10px_-6px_rgba(0,0,0,0.08)] dark:shadow-[0_15px_25px_-5px_rgba(0,0,0,0.4),0_8px_10px_-6px_rgba(0,0,0,0.2)]">
                             
                             {/* Left pointed flap */}
                             <div 
