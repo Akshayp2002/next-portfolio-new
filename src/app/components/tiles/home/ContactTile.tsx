@@ -6,7 +6,7 @@ export default function ContactTile() {
 
     return (
         <div 
-            className="group block w-full h-full rounded-4xl bg-white dark:bg-zinc-900 border border-black/5 dark:border-white/5 p-6 sm:p-8 flex flex-col relative overflow-hidden transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.04)]"
+            className="group block w-full h-full rounded-4xl bg-white dark:bg-zinc-950 border border-black/5 dark:border-white/5 dark:ring-2 dark:ring-gray-700 p-6 sm:p-8 flex flex-col relative overflow-hidden transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.04)]"
         >
             {/* Header */}
             <div className="relative z-50">
@@ -58,8 +58,8 @@ export default function ContactTile() {
                 <div className="relative bottom-4 w-[320px] h-[190px] origin-bottom sm:scale-100 scale-90 flex justify-center flex-col items-center">
                     
                     {/* ENVELOPE BACK INTERIOR */}
-                    <div className="absolute bottom-0 w-[320px] h-[170px] bg-gradient-to-b from-[#e1e1e1] to-[#ebebeb] dark:from-zinc-800 dark:to-zinc-700 rounded-b-[24px] shadow-[inset_0_15px_30px_rgba(0,0,0,0.08)] overflow-hidden">
-                        <div className="absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b from-black/[0.04] to-transparent dark:from-black/30"></div>
+                    <div className="absolute bottom-0 w-[320px] h-[170px] bg-gradient-to-b from-[#e1e1e1] to-[#ebebeb] dark:from-zinc-900 dark:to-zinc-950 rounded-b-[24px] shadow-[inset_0_15px_30px_rgba(0,0,0,0.08)] overflow-hidden">
+                        <div className="absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b from-black/[0.04] to-transparent dark:from-black/40"></div>
                     </div>
 
                     {/* MAIL CARDS */}
@@ -109,17 +109,17 @@ export default function ContactTile() {
                             
                             {/* Left pointed flap */}
                             <div 
-                                className="absolute left-[-110px] top-[-30px] w-[240px] h-[240px] rotate-45 rounded-[36px] bg-gradient-to-br from-[#fdfdfd] to-[#f4f4f4] dark:from-zinc-700 dark:to-zinc-800 shadow-[5px_-5px_15px_rgba(0,0,0,0.05)] border-t border-r border-black/5 dark:border-white/5" 
+                                className="absolute left-[-110px] top-[-30px] w-[240px] h-[240px] rotate-45 rounded-[36px] bg-gradient-to-br from-[#fdfdfd] to-[#f4f4f4] dark:from-zinc-800 dark:to-zinc-900 shadow-[5px_-5px_15px_rgba(0,0,0,0.05)] border-t border-r border-black/5 dark:border-white/5" 
                             ></div>
                             
                             {/* Right pointed flap */}
                             <div 
-                                className="absolute right-[-110px] top-[-30px] w-[240px] h-[240px] -rotate-45 rounded-[36px] bg-gradient-to-bl from-[#f2f2f2] to-[#e8e8e8] dark:from-[#3a3a46] dark:to-zinc-800 shadow-[-5px_-5px_15px_rgba(0,0,0,0.05)] border-t border-l border-black/5 dark:border-white/5" 
+                                className="absolute right-[-110px] top-[-30px] w-[240px] h-[240px] -rotate-45 rounded-[36px] bg-gradient-to-bl from-[#f2f2f2] to-[#e8e8e8] dark:from-zinc-800 dark:to-zinc-900 shadow-[-5px_-5px_15px_rgba(0,0,0,0.05)] border-t border-l border-black/5 dark:border-white/5" 
                             ></div>
                             
                             {/* Bottom angled flap overlapping left & right flaps */}
                             <div 
-                                className="absolute bottom-[-220px] left-1/2 -translate-x-1/2 w-[320px] h-[320px] rotate-45 rounded-[46px] bg-gradient-to-t from-white to-[#fbfbfb] dark:from-zinc-600 dark:to-zinc-500 shadow-[0_-5px_20px_rgba(0,0,0,0.05)] dark:shadow-[0_-5px_20px_rgba(0,0,0,0.3)] border-t border-l border-black/[0.03] dark:border-white/5" 
+                                className="absolute bottom-[-220px] left-1/2 -translate-x-1/2 w-[320px] h-[320px] rotate-45 rounded-[46px] bg-gradient-to-t from-white to-[#fbfbfb] dark:from-zinc-900 dark:to-zinc-800 shadow-[0_-5px_20px_rgba(0,0,0,0.05)] dark:shadow-[0_-5px_20px_rgba(0,0,0,0.3)] border-t border-l border-black/[0.03] dark:border-white/5" 
                             ></div>
 
                         </div>
