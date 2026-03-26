@@ -185,40 +185,40 @@ export const projectsData = [
       },
     ],
   },
-  {
-    name: "Home Lab System",
-    description:
-      "The Home Lab System is a self-hosted setup in my house, using an old computer to run private services with Docker and other software solutions.",
-    image: "/projects/homelabs.webp",
-    github: "https://github.com/Akshayp2002/homelab/tree/main",
-    view: false,
-    workStatus: true,
-    date: "January - 2025",
-    demo: false,
-    personal: true,
-    tech: [
-      {
-        name: "Docker",
-        image: "/tech/docker.svg",
-      },
-      {
-        name: "Jellyfin",
-        image: "/tech/jellyfin.svg",
-      },
-      {
-        name: "Tailscale",
-        image: "/tech/tailscale.svg",
-      },
-      {
-        name: "Immich",
-        image: "/tech/immich.svg",
-      },
-      {
-        name: "Linux",
-        image: "/tech/linux.svg",
-      },
-    ],
-  },
+  // {
+  //   name: "Home Lab System",
+  //   description:
+  //     "The Home Lab System is a self-hosted setup in my house, using an old computer to run private services with Docker and other software solutions.",
+  //   image: "/projects/homelabs.webp",
+  //   github: "https://github.com/Akshayp2002/homelab/tree/main",
+  //   view: false,
+  //   workStatus: true,
+  //   date: "January - 2025",
+  //   demo: false,
+  //   personal: true,
+  //   tech: [
+  //     {
+  //       name: "Docker",
+  //       image: "/tech/docker.svg",
+  //     },
+  //     {
+  //       name: "Jellyfin",
+  //       image: "/tech/jellyfin.svg",
+  //     },
+  //     {
+  //       name: "Tailscale",
+  //       image: "/tech/tailscale.svg",
+  //     },
+  //     {
+  //       name: "Immich",
+  //       image: "/tech/immich.svg",
+  //     },
+  //     {
+  //       name: "Linux",
+  //       image: "/tech/linux.svg",
+  //     },
+  //   ],
+  // },
   {
     name: "Quotes Generator",
     description:
