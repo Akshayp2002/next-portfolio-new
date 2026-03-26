@@ -68,7 +68,7 @@ export default function ContactTile() {
                     {/* MAIL CARDS */}
                     
                     {/* Purple Card (Back) */}
-                    <div className="absolute left-[35px] bottom-[70px] z-10 h-[110px] w-[170px] -rotate-[8deg] rounded-[18px] bg-[#6358ff] px-4 py-3.5 text-white shadow-[0_8px_20px_rgba(99,88,255,0.15)] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-[15px] group-hover:-translate-x-3 group-hover:-rotate-[10deg]">
+                    <div className="absolute left-[35px] bottom-[70px] z-10 h-[130px] w-[170px] -rotate-[8deg] rounded-[18px] bg-[#6358ff] px-4 py-3.5 text-white shadow-[0_8px_20px_rgba(99,88,255,0.15)] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-[15px] group-hover:-translate-x-3 group-hover:-rotate-[10deg]">
                         <div className="flex items-center justify-between text-[11px] text-white/90 font-medium tracking-tight">
                             <span>Inbox</span>
                             <span className="text-[12px] opacity-80">✦</span>
@@ -79,7 +79,7 @@ export default function ContactTile() {
                     </div>
 
                     {/* Orange Card (Middle) */}
-                    <div className="absolute left-[80px] bottom-[95px] z-20 h-[120px] w-[185px] rotate-[4deg] rounded-[18px] bg-[#ff6c3e] px-4 py-3.5 text-white shadow-[0_12px_25px_rgba(255,108,62,0.2)] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-[25px] group-hover:-translate-x-1 group-hover:rotate-[6deg]">
+                    <div className="absolute left-[80px] bottom-[95px] z-20 h-[140px] w-[185px] rotate-[4deg] rounded-[18px] bg-[#ff6c3e] px-4 py-3.5 text-white shadow-[0_12px_25px_rgba(255,108,62,0.2)] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-[25px] group-hover:-translate-x-1 group-hover:rotate-[6deg]">
                         <div className="flex items-center justify-between text-[11px] text-white/90 font-medium tracking-tight">
                             <span>Reach Out</span>
                             <span className="text-[14px] opacity-80 italic">✦</span>
@@ -90,7 +90,7 @@ export default function ContactTile() {
                     </div>
 
                     {/* White Card (Front) */}
-                    <div className="absolute right-[25px] bottom-[70px] z-30 h-[105px] w-[170px] rotate-[10deg] rounded-[18px] bg-white dark:bg-[#fcfcfc] px-4 py-3.5 text-zinc-800 shadow-[0_12px_25px_rgba(0,0,0,0.08)] border border-black/5 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-[15px] group-hover:translate-x-3 group-hover:rotate-[12deg]">
+                    <div className="absolute right-[25px] bottom-[65px] z-30 h-[132px] w-[170px] rotate-[10deg] rounded-[18px] bg-white dark:bg-[#fcfcfc] px-4 py-3.5 text-zinc-800 shadow-[0_12px_25px_rgba(0,0,0,0.08)] border border-black/5 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-[15px] group-hover:translate-x-3 group-hover:rotate-[12deg]">
                         <div className="flex items-center justify-between text-[11px] text-zinc-500 font-medium tracking-tight">
                             <span>Say Hi!</span>
                             <div className="flex -space-x-1.5 opacity-60">
@@ -105,21 +105,21 @@ export default function ContactTile() {
 
                     {/* ENVELOPE FRONT FLAPS (Z-40) */}
                     <div className="absolute bottom-0 w-[320px] h-[180px] z-40 pointer-events-none">
-                        <div className="relative w-full h-[180px] rounded-b-[24px] overflow-hidden">
+                        <div className="relative w-full h-[180px] rounded-b-[24px] shadow-xl overflow-hidden">
                             
                             {/* Left pointed flap */}
                             <div 
-                                className="absolute left-[-160px] top-[5px] w-[240px] h-[280px] rotate-45 rounded-[36px] bg-[#f9f9f9] dark:bg-[#1e1e1e] shadow-[2px_-2px_10px_rgba(0,0,0,0.02)] border-t border-r border-black/5 dark:border-white/5" 
+                                className="absolute left-[-160px] top-[5px] w-[240px] h-[280px] rotate-45 rounded-[36px] bg-[#f9f9f9] dark:bg-[#1e1e1e] shadow-[0_0_15px_rgba(0,0,0,0.05)] border-t border-r border-black/5 dark:border-white/5" 
                             ></div>
                             
                             {/* Right pointed flap */}
                             <div 
-                                className="absolute right-[-160px] top-[5px] w-[240px] h-[280px] -rotate-45 rounded-[36px] bg-[#fdfdfd] dark:bg-[#222222] shadow-[-2px_-2px_10px_rgba(0,0,0,0.02)] border-t border-l border-black/5 dark:border-white/5" 
+                                className="absolute right-[-160px] top-[5px] w-[240px] h-[280px] -rotate-45 rounded-[36px] bg-[#fdfdfd] dark:bg-[#222222] shadow-[0_0_15px_rgba(0,0,0,0.05)] border-t border-l border-black/5 dark:border-white/5" 
                             ></div>
                             
                             {/* Bottom angled flap overlapping left & right flaps */}
                             <div 
-                                className="absolute bottom-[-277px] left-1/2 -translate-x-1/2 w-[320px] h-[320px] rotate-45 rounded-[17px] bg-white dark:bg-[#252525] border-t border-l border-black/[0.03] dark:border-white/5" 
+                                className="absolute bottom-[-277px] left-1/2 -translate-x-1/2 w-[320px] h-[320px] rotate-45 rounded-[17px] bg-white dark:bg-[#252525] border-t border-l border-black/[0.03] dark:border-white/5 shadow-[0_0_20px_rgba(0,0,0,0.1)]" 
                             ></div>
 
                         </div>
