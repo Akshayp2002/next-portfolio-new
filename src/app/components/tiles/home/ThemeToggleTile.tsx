@@ -37,7 +37,7 @@ const ThemeToggleTile = () => {
                 <div className="circle">
                   <div className="crescent" />
                 </div>
-                <label htmlFor="switch">
+                <label htmlFor="switch" className="ring-2 ring-transparent dark:ring-gray-700">
                   <div className="toggle" />
                   <div className="names">
                     <p className="light">Light</p>
@@ -269,7 +269,6 @@ const StyledWrapper = styled.div`
   }
   [type="checkbox"]:checked + .app .body {
     border-radius: 40px;
-    ;
   }
   .menu {
     font-size: 80%;

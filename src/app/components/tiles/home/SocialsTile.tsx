@@ -43,14 +43,14 @@ export default function SocialTile() {
 	}, []);
 
 	return (
-		<div className="w-full h-full relative overflow-hidden rounded-4xl">
+		<div className="w-full h-full relative overflow-hidden rounded-4xl ring-2 ring-transparent dark:ring-gray-700 transition-all duration-300">
 			{SLIDES.map((slide, index) => {
 				const isActive = activeIndex === index;
 
 				return (
 					<div
 						key={slide.id}
-						className={`absolute inset-0 flex items-center justify-center transition-[opacity,transform] duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${slide.bgClass} ${isActive ? "opacity-100 scale-100 pointer-events-auto z-10" : "opacity-0 scale-[0.98] pointer-events-none z-0"}`}
+						className={`absolute inset-0 flex items-center justify-center transition-[opacity,transform,background-color] duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${slide.bgClass} dark:bg-neutral-900 dark:bg-none ${isActive ? "opacity-100 scale-100 pointer-events-auto z-10" : "opacity-0 scale-[0.98] pointer-events-none z-0"}`}
 						aria-hidden={!isActive}
 					>
 						<a
