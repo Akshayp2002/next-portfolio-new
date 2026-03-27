@@ -69,7 +69,7 @@ function SectionCard({
   return (
     <section className="rounded-4xl bg-white p-4 dark:bg-[#0d1117] dark:ring-2 dark:ring-gray-700 sm:p-5 lg:p-6">
       <div className="flex items-center justify-between gap-3 pb-4">
-        <h2 className="text-lg font-bold tracking-tight text-gray-900 dark:text-white sm:text-xl md:text-2xl">
+        <h2 className="text-lg font-bold font-decorative tracking-tight text-gray-900 dark:text-white sm:text-xl md:text-2xl">
           {title}
         </h2>
         {badge && (
@@ -170,7 +170,7 @@ export default function AboutContent({ testimonials: initialTestimonials = [] }:
       <div className="max-w-[1200px] w-full px-4">
         <div className="grid grid-cols-1 gap-5">
           <section className="min-h-75 rounded-4xl bg-white p-4 dark:bg-[#0d1117] dark:ring-2 dark:ring-gray-700 sm:p-5 md:px-10 lg:px-16">
-            <div className="h-full flex flex-col justify-center font-[Quicksand,sans-serif]">
+            <div className="h-full flex flex-col justify-center">
               <div className="flex items-center gap-6 mb-3">
                 <div className="relative w-24 h-24 shrink-0">
                   <Image
@@ -298,7 +298,7 @@ export default function AboutContent({ testimonials: initialTestimonials = [] }:
                       {item.quote}
                     </p>
                     <div className="mt-auto pt-1">
-                      <h3 className="text-sm font-semibold tracking-tight font-sans text-gray-900 dark:text-white sm:text-base">
+                      <h3 className="text-sm font-semibold tracking-tight text-gray-900 dark:text-white sm:text-base">
                         - {item.name}
                       </h3>
                       <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400 sm:text-xs">
@@ -348,17 +348,17 @@ export default function AboutContent({ testimonials: initialTestimonials = [] }:
 
             <div className="max-h-[78vh] space-y-4 overflow-y-auto px-4 py-4 sm:px-5 sm:py-5 md:px-6">
               <section className="rounded-3xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-[#111821]">
-                <h4 className="text-base font-bold tracking-wide font-[Quicksand,sans-serif] text-gray-800 dark:text-gray-100 sm:text-lg">Overview</h4>
+                <h4 className="text-base font-bold tracking-wide text-gray-800 dark:text-gray-100 sm:text-lg">Overview</h4>
                 <p className="mt-2 text-xs leading-6 text-gray-700 dark:text-gray-200 sm:text-sm sm:leading-7">{selectedCareer.overview}</p>
               </section>
 
               <section className="rounded-3xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-[#111821]">
-                <h4 className="text-base font-bold tracking-wide font-[Quicksand,sans-serif] text-gray-800 dark:text-gray-100 sm:text-lg">My Role</h4>
+                <h4 className="text-base font-bold tracking-wide text-gray-800 dark:text-gray-100 sm:text-lg">My Role</h4>
                 <p className="mt-2 text-xs leading-6 text-gray-700 dark:text-gray-200 sm:text-sm sm:leading-7">{selectedCareer.myRole}</p>
               </section>
 
               <section className="rounded-3xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-[#111821]">
-                <h4 className="text-base font-bold tracking-wide font-[Quicksand,sans-serif] text-gray-800 dark:text-gray-100 sm:text-lg">Projects</h4>
+                <h4 className="text-base font-bold tracking-wide text-gray-800 dark:text-gray-100 sm:text-lg">Projects</h4>
                 <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {selectedCareer.projects.map((project, index) => (
                     <article
@@ -399,7 +399,7 @@ export default function AboutContent({ testimonials: initialTestimonials = [] }:
               </section>
 
               <section className="h-[220px] rounded-3xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-[#111821]">
-                <h4 className="text-base font-bold tracking-wide font-[Quicksand,sans-serif] text-gray-800 dark:text-gray-100 sm:text-lg">Skills Acquired</h4>
+                <h4 className="text-base font-bold tracking-wide text-gray-800 dark:text-gray-100 sm:text-lg">Skills Acquired</h4>
                 <div className="mt-3 grid max-h-[155px] grid-cols-2 gap-2.5 overflow-y-auto pr-1 sm:grid-cols-3 md:grid-cols-4">
                   {selectedCareer.skills.map((skill) => (
                     <div

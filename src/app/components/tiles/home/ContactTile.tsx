@@ -10,7 +10,7 @@ export default function ContactTile() {
         >
             {/* Header */}
             <div className="relative z-50">
-                <h2 className="text-[25px] font-semibold tracking-[-0.02em] text-[#1e1e1e] dark:text-white leading-tight">
+                <h2 className="text-[25px] font-semibold font-decorative tracking-[-0.02em] text-[#1e1e1e] dark:text-white leading-tight">
                     Let's Connect
                 </h2>
                 <p className="mt-1.5 max-w-[280px] text-[15px] leading-relaxed text-[#8a8a8a] dark:text-zinc-400">
@@ -45,7 +45,7 @@ export default function ContactTile() {
                         </svg>
                     </div>
                     {/* Text part (appears on hover) */}
-                    <span className="text-muted text-[13px] whitespace-nowrap opacity-0 transition-opacity duration-200 group-hover/btn:opacity-100 delay-75 pr-4">
+                    <span className="text-muted text-[13px] whitespace-nowrap opacity-0 transition-opacity duration-200 group-hover/btn:opacity-100 delay-75 pr-4 font-decorative">
                         Contact Me
                     </span>
                 </div>

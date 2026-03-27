@@ -13,10 +13,10 @@ export default function IntroTile() {
                 </div> */}
             </div>
 
-            <h1 className="text-md font-bold text-gray-800 leading-tight">
+            <h1 className="text-gray-500 text-base leading-relaxed">
                 I'm{" "}
-                <span className="relative inline-block whitespace-nowrap z-10">
-                    <span className="relative z-20">Akshay</span>
+                <span className="relative inline-block whitespace-nowrap z-10 font-bold text-gray-800">
+                    <span className="relative z-20 font-decorative text-[20px]">Akshay</span>
                     <img src="/line-1.svg" alt="underline" className="absolute left-0 w-full top-[-16%] -z-10 pointer-events-none" />
                 </span>
                 , a Software developer from Kerala...

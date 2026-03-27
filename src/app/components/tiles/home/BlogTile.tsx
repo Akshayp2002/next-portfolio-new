@@ -11,7 +11,7 @@ const BlogTile = () => {
           Curated thoughts, experiments & discoveries.
         </p>
 
-        <h2 className="mt-5 text-[32px] leading-none font-normal tracking-[-0.04em] text-black dark:text-white">
+        <h2 className="mt-5 text-[32px] leading-none font-normal tracking-[-0.04em] text-black dark:text-white font-decorative ">
           Notes & explorations
         </h2>
       </div>
@@ -84,7 +84,7 @@ const BlogTile = () => {
       </div>
 
       {/* Center-top-right Code Icon */}
-      <div className="absolute z-30 right-[36%] top-[51px] transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-12">
+      <div className="absolute z-30 right-[30%] top-[51px] transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-12">
         <div className="w-[48px] h-[48px] rounded-[14px] bg-white dark:bg-zinc-800 shadow-[0_8px_16px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.95)] dark:shadow-[0_8px_16px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)] flex items-center justify-center rotate-[12deg]">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M16 18L22 12L16 6" stroke="#4f46e5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -142,7 +142,7 @@ const BlogTile = () => {
             </svg>
           </div>
           {/* Text part (appears on hover) */}
-          <span className="text-[13px] font-medium whitespace-nowrap opacity-0 transition-opacity duration-200 group-hover/btn:opacity-100 delay-75 pr-4">
+          <span className="text-[13px] font-medium whitespace-nowrap opacity-0 transition-opacity duration-200 group-hover/btn:opacity-100 delay-75 pr-4 font-decorative">
             Read Blog
           </span>
         </div>

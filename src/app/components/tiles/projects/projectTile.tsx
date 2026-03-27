@@ -31,7 +31,7 @@ export default function ProjectTile({ project }: { project: Project }) {
                 <div className="flex flex-col justify-between w-full">
                     {/* Text Content */}
                     <div>
-                        <h2 className="text-md lg:text-xl font-black text-gray-800 dark:text-gray-100 mb-2 tracking-tight">
+                        <h2 className="text-md lg:text-xl font-black text-gray-800 dark:text-gray-100 mb-2 tracking-tight font-decorative">
                             {project.name}
                         </h2>
                         <p className="text-gray-500 dark:text-gray-300 text-sm md:text-xs xl:text-sm leading-relaxed mb-3">
