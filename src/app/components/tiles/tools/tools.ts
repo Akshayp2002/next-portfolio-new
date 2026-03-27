@@ -20,13 +20,13 @@ export const toolsData = [
     link: "https://angular.io",
     image: "/tech/angular17.svg",
   },
-  {
-    name: "Splade",
-    description:
-      "Splade provides a super easy way to build Single Page Applications (SPA) using standard Laravel Blade templates, enhanced with renderless Vue 3 components. ",
-    link: "https://splade.dev/",
-    image: "/tech/splade.svg",
-  },
+  // {
+  //   name: "Splade",
+  //   description:
+  //     "Splade provides a super easy way to build Single Page Applications (SPA) using standard Laravel Blade templates, enhanced with renderless Vue 3 components. ",
+  //   link: "https://splade.dev/",
+  //   image: "/tech/splade.svg",
+  // },
   {
     name: "Tailwind CSS",
     description:
@@ -132,13 +132,13 @@ export const toolsData = [
     link: "https://code.visualstudio.com/",
     image: "/tech/vscode.svg",
   },
-  {
-    name: "ChatGPT",
-    description:
-      "ChatGPT is an AI chatbot developed by OpenAI, is used for content writing, and assisting with coding, all through natural language processing.",
-    link: "https://chatgpt.com/",
-    image: "/tech/openai.svg",
-  },
+  // {
+  //   name: "ChatGPT",
+  //   description:
+  //     "ChatGPT is an AI chatbot developed by OpenAI, is used for content writing, and assisting with coding, all through natural language processing.",
+  //   link: "https://chatgpt.com/",
+  //   image: "/tech/openai.svg",
+  // },
   {
     name: "Vercel",
     description:
@@ -153,13 +153,13 @@ export const toolsData = [
     link: "https://www.typescriptlang.org/",
     image: "/tech/typescript.svg",
   },
-  {
-    name: "Laravel Pulse",
-    description:
-      "Laravel Pulse is a real-time application performance monitoring tool and dashboard for your Laravel application. ",
-    link: "https://pulse.laravel.com/",
-    image: "/tech/pulse.svg",
-  },
+  // {
+  //   name: "Laravel Pulse",
+  //   description:
+  //     "Laravel Pulse is a real-time application performance monitoring tool and dashboard for your Laravel application. ",
+  //   link: "https://pulse.laravel.com/",
+  //   image: "/tech/pulse.svg",
+  // },
   {
     name: "Livewire",
     description:
@@ -215,5 +215,12 @@ export const toolsData = [
       "Supabase is an open source Firebase alternative that provides a backend-as-a-service with a real-time database, authentication, and edge functions.",
     link: "https://supabase.com/",
     image: "/tech/supabase.svg",
+  },
+  {
+    name: "Next.js",
+    description:
+      "Next.js is a React framework for building full-stack web applications. It provides features like server-side rendering, static site generation.",
+    link: "https://nextjs.org/",
+    image: "/tech/nextjs2.svg",
   },
 ];

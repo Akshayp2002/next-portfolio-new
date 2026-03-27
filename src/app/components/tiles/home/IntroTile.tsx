@@ -6,7 +6,7 @@ export default function IntroTile() {
             <div className="flex items-center gap-6 mb-2">
                 {/* Placeholder for 3D Avatar Image */}
                 <div className="relative w-24 h-24">
-                    <Image src="/head-hand.png" alt="Akshay's Avatar" width={100} height={100} className="rounded-full" />
+                    <Image src="/memoji.png" alt="Akshay's Avatar" width={60} height={100} className="rounded-full" />
                 </div>
                 {/* <div className="bg-orange-600 text-white px-5 py-2 rounded-full font-bold text-sm tracking-tight">
                     Good Afternoon!

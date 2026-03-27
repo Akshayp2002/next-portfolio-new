@@ -82,7 +82,6 @@ function SectionCard({
     </section>
   );
 }
-
 function ModalPortal({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
@@ -95,7 +94,24 @@ function ModalPortal({ children }: { children: React.ReactNode }) {
   return createPortal(children, document.body);
 }
 
-export default function AboutContent({ testimonials = [] }: { testimonials?: TestimonialItem[] }) {
+function TestimonialSkeleton() {
+  return (
+    <div className="h-full animate-pulse rounded-3xl border border-gray-200/80 bg-[#f8fafc] p-4 dark:border-gray-700 dark:bg-[#111821] sm:p-5 flex flex-col">
+      <div className="h-10 w-10 rounded-full bg-gray-200 dark:bg-gray-700" />
+      <div className="mt-4 space-y-2">
+        <div className="h-3 w-full rounded bg-gray-200 dark:bg-gray-700" />
+        <div className="h-3 w-5/6 rounded bg-gray-200 dark:bg-gray-700" />
+        <div className="h-3 w-4/6 rounded bg-gray-200 dark:bg-gray-700" />
+      </div>
+      <div className="mt-auto pt-6">
+        <div className="h-4 w-24 rounded bg-gray-200 dark:bg-gray-700" />
+        <div className="mt-2 h-3 w-32 rounded bg-gray-200 dark:bg-gray-700" />
+      </div>
+    </div>
+  );
+}
+
+export default function AboutContent({ testimonials: initialTestimonials = [] }: { testimonials?: TestimonialItem[] }) {
   const [isTimelineOpen, setIsTimelineOpen] = useState(false);
   const [selectedCareer, setSelectedCareer] = useState<CareerEntry | null>(null);
   const [projectCarousel, setProjectCarousel] = useState<{
@@ -103,11 +119,39 @@ export default function AboutContent({ testimonials = [] }: { testimonials?: Tes
     index: number;
   } | null>(null);
   const [activeTab, setActiveTab] = useState<"experience" | "education">("experience");
+  const [testimonials, setTestimonials] = useState<TestimonialItem[]>(initialTestimonials);
+  const [loading, setLoading] = useState(initialTestimonials.length === 0);
 
   const previewExperience = useMemo(() => careersData.slice(0, 2), []);
   const previewEducation = useMemo(() => education.slice(0, 2), []);
-  const testimonialsToRender = testimonials;
 
+  useEffect(() => {
+    if (initialTestimonials.length === 0) {
+      const fetchTestimonials = async () => {
+        try {
+          const response = await fetch('/api/reviews');
+          const data = await response.json();
+          const formattedData = data.map((item: any) => ({
+            id: item.id,
+            quote: item.review || item.quote,
+            name: item.name,
+            position: item.position,
+            company: item.company,
+            rating: item.rating
+          }));
+          setTestimonials(formattedData);
+        } catch (error) {
+          console.error("Failed to fetch testimonials:", error);
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchTestimonials();
+    } else {
+      setTestimonials(initialTestimonials);
+      setLoading(false);
+    }
+  }, [initialTestimonials]);
   useEffect(() => {
     const isAnyModalOpen = Boolean(selectedCareer || projectCarousel || isTimelineOpen);
     const previousOverflow = document.body.style.overflow;
@@ -130,7 +174,7 @@ export default function AboutContent({ testimonials = [] }: { testimonials?: Tes
               <div className="flex items-center gap-6 mb-3">
                 <div className="relative w-24 h-24 shrink-0">
                   <Image
-                    src="/head-hand.png"
+                    src="/mepopper.png"
                     alt="Akshay profile"
                     width={100}
                     height={100}
@@ -138,11 +182,6 @@ export default function AboutContent({ testimonials = [] }: { testimonials?: Tes
                   />
                 </div>
               </div>
-
-              <h1 className="text-base font-bold leading-tight text-gray-800 dark:text-gray-100 sm:text-lg md:text-xl">
-                I am <span className="underline decoration-blue-500 decoration-4 underline-offset-4">Akshay</span>
-              </h1>
-
               <p className="mt-3 text-gray-500 dark:text-gray-300 text-xs leading-relaxed sm:text-sm md:text-base max-w-[900px]">
                 I am an enthusiastic Laravel developer with experience, keen to leverage my robust knowledge in Laravel and related technologies to significantly contribute to the company success while continuously expanding my expertise. I enjoy creating solutions from scratch, exploring how things work, and I am driven by curiosity to solve complex challenges.
               </p>
@@ -240,27 +279,39 @@ export default function AboutContent({ testimonials = [] }: { testimonials?: Tes
             </p>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {testimonialsToRender.map((item) => (
-                <article
-                  key={item.id}
-                  className="h-full rounded-3xl border border-gray-200/80 bg-[#f8fafc] p-4 dark:border-gray-700 dark:bg-[#111821] sm:p-5 flex flex-col"
-                >
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#94a3b8] ring-1 ring-gray-200 dark:bg-[#0d1117] dark:text-[#cbd5e1] dark:ring-gray-600">
-                    <FaQuoteLeft className="h-4 w-4" />
-                  </div>
-                  <p className="mt-4 text-xs leading-5 text-gray-700 dark:text-gray-200 sm:text-sm sm:leading-6">
-                    {item.quote}
-                  </p>
-                  <div className="mt-auto pt-1">
-                    <h3 className="text-sm font-semibold tracking-tight font-sans text-gray-900 dark:text-white sm:text-base">
-                      - {item.name}
-                    </h3>
-                    <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400 sm:text-xs">
-                      {item.position} • {item.company}
+              {loading ? (
+                <>
+                  <TestimonialSkeleton />
+                  <TestimonialSkeleton />
+                  <TestimonialSkeleton />
+                </>
+              ) : testimonials.length > 0 ? (
+                testimonials.map((item) => (
+                  <article
+                    key={item.id}
+                    className="h-full rounded-3xl border border-gray-200/80 bg-[#f8fafc] p-4 dark:border-gray-700 dark:bg-[#111821] sm:p-5 flex flex-col"
+                  >
+                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#94a3b8] ring-1 ring-gray-200 dark:bg-[#0d1117] dark:text-[#cbd5e1] dark:ring-gray-600">
+                      <FaQuoteLeft className="h-4 w-4" />
+                    </div>
+                    <p className="mt-4 text-xs leading-5 text-gray-700 dark:text-gray-200 sm:text-sm sm:leading-6">
+                      {item.quote}
                     </p>
-                  </div>
-                </article>
-              ))}
+                    <div className="mt-auto pt-1">
+                      <h3 className="text-sm font-semibold tracking-tight font-sans text-gray-900 dark:text-white sm:text-base">
+                        - {item.name}
+                      </h3>
+                      <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400 sm:text-xs">
+                        {item.position} {item.company ? `• ${item.company}` : ""}
+                      </p>
+                    </div>
+                  </article>
+                ))
+              ) : (
+                <div className="col-span-1 md:col-span-2 xl:col-span-3 text-center py-10 text-gray-500">
+                  No testimonials yet.
+                </div>
+              )}
             </div>
           </SectionCard>
         </div>

@@ -2,11 +2,24 @@ import Image from "next/image";
 // components/tiles/home/IntroTile.tsx
 export default function aboutTile() {
     return (
-        <div className="flex flex-col justify-center h-full px-10 lg:px-16 dark:bg-[#0d1117]">
+        <div className="flex flex-col justify-center h-full px-10 lg:px-16 dark:bg-[#0d1117] group">
             <div className="flex items-center gap-6 mb-2">
                 {/* Placeholder for 3D Avatar Image */}
                 <div className="relative w-24 h-24">
-                    <Image src="/head-hand.png" alt="Akshay's Avatar" width={100} height={100} className="rounded-full" />
+                    <Image 
+                        src="/me-laptop.png" 
+                        alt="Akshay's Avatar Laptop" 
+                        width={100} 
+                        height={100} 
+                        className="absolute inset-0 transition-opacity duration-500 opacity-100 group-hover:opacity-0" 
+                    />
+                    <Image 
+                        src="/mecloud.png" 
+                        alt="Akshay's Avatar Cloud" 
+                        width={100} 
+                        height={100} 
+                        className="absolute inset-0 transition-opacity duration-500 opacity-0 group-hover:opacity-100" 
+                    />
                 </div>
                 {/* <div className="bg-orange-600 text-white px-5 py-2 rounded-full font-bold text-sm tracking-tight">
                     Good Afternoon!
