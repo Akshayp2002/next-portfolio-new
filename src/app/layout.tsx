@@ -8,7 +8,7 @@ import ThemeProvider from "./theme-provider";
 import PageTransition from "./page-transition";
 import DelayedFooter from "@/delayed-footer";
 import { Inter, Young_Serif } from "next/font/google";
-
+import { Analytics } from "@vercel/analytics/next"
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -40,6 +40,7 @@ export default function RootLayout({
           <PageTransition>{children}</PageTransition>
           <DelayedFooter />
         </ThemeProvider>
+        <Analytics/>
       </body>
     </html>
   );
