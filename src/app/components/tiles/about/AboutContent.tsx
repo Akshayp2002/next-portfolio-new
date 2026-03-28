@@ -22,7 +22,7 @@ const spinGlow = keyframes`
 
 const GlowContainer = styled.div`
   position: relative;
-  padding: 1px;
+  padding: 1.5px;
   background: transparent;
   overflow: hidden;
   border-radius: 1.5rem;
@@ -39,15 +39,15 @@ const GlowBorder = styled.div`
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    transparent 120deg,
-    #eff8ffff 150deg,
-    #c6dfffff 180deg,
-    transparent 210deg,
+    transparent 100deg,
+    #63fafacd 150deg,
+    #60a5fa 180deg,
+    transparent 230deg,
     transparent 360deg
   );
   animation: ${spinGlow} 4s linear infinite;
   z-index: 0;
-  filter: none;
+  filter: blur(4px);
 `;
 
 type TestimonialItem = {
@@ -237,35 +237,37 @@ export default function AboutContent({ testimonials: initialTestimonials = EMPTY
               <SectionCard title="Experience" badge="Career">
                 <div className="space-y-3.5">
                   {previewExperience.map((item) => (
-                    <article
-                      key={`${item.role}-${item.company}`}
-                      className="rounded-3xl border border-gray-200 bg-white p-3.5 dark:border-gray-700 dark:bg-[#111821] cursor-pointer transition-all duration-200 hover:ring-2 hover:ring-gray-200 dark:hover:ring-gray-600 sm:p-4"
-                      onClick={() => setSelectedCareer(item)}
-                    >
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="flex items-start gap-3 min-w-0">
-                          <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-2xl border border-dashed border-gray-300 bg-gray-50 dark:border-gray-600 dark:bg-[#0d1117]">
-                            <Image
-                              src={item.logo}
-                              alt={`${item.company} logo`}
-                              fill
-                              className="object-cover"
-                            />
+                    <GlowContainer key={`${item.role}-${item.company}`}>
+                      <GlowBorder />
+                      <article
+                        className="relative z-10 h-full w-full rounded-[calc(1.5rem-1.5px)] border border-gray-200 bg-white p-3.5 dark:border-gray-700 dark:bg-[#111821] cursor-pointer transition-all duration-200 hover:ring-2 hover:ring-gray-200 dark:hover:ring-gray-600 sm:p-4 overflow-hidden"
+                        onClick={() => setSelectedCareer(item)}
+                      >
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="flex items-start gap-3 min-w-0">
+                            <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-2xl border border-dashed border-gray-300 bg-gray-50 dark:border-gray-600 dark:bg-[#0d1117]">
+                              <Image
+                                src={item.logo}
+                                alt={`${item.company} logo`}
+                                fill
+                                className="object-cover"
+                              />
+                            </div>
+                            <div className="min-w-0">
+                              <h3 className="text-sm font-semibold text-gray-900 dark:text-white sm:text-base">{item.role}</h3>
+                              <p className="mt-1 text-xs font-medium text-sky-700 dark:text-sky-300 truncate sm:text-sm">{item.company}</p>
+                            </div>
                           </div>
-                          <div className="min-w-0">
-                            <h3 className="text-sm font-semibold text-gray-900 dark:text-white sm:text-base">{item.role}</h3>
-                            <p className="mt-1 text-xs font-medium text-sky-700 dark:text-sky-300 truncate sm:text-sm">{item.company}</p>
-                          </div>
+                          <span className={`inline-flex shrink-0 whitespace-nowrap items-center rounded-full border border-gray-200 bg-gray-50 px-2.5 py-1 text-[11px] font-semibold text-gray-600 dark:border-gray-600 dark:bg-[#0d1117] dark:text-gray-200 ${item.current ? "ring-1 ring-green-500 text-green-500" : ""}`}>
+                            {item.badge}
+                          </span>
                         </div>
-                        <span className={`inline-flex shrink-0 whitespace-nowrap items-center rounded-full border border-gray-200 bg-gray-50 px-2.5 py-1 text-[11px] font-semibold text-gray-600 dark:border-gray-600 dark:bg-[#0d1117] dark:text-gray-200 ${item.current ? "ring-1 ring-green-500 text-green-500" : ""}`}>
-                          {item.badge}
-                        </span>
-                      </div>
-                      <div className="mt-2 flex items-center justify-between gap-3">
-                        <p className="text-[11px] text-gray-500 dark:text-gray-400 sm:text-xs">{item.period}</p>
-                        <p className="text-[11px] font-semibold text-gray-600 dark:text-gray-300 text-right sm:text-xs">View details</p>
-                      </div>
-                    </article>
+                        <div className="mt-2 flex items-center justify-between gap-3">
+                          <p className="text-[11px] text-gray-500 dark:text-gray-400 sm:text-xs">{item.period}</p>
+                          <p className="text-[11px] font-semibold text-gray-600 dark:text-gray-300 text-right sm:text-xs">View details</p>
+                        </div>
+                      </article>
+                    </GlowContainer>
                   ))}
                   <button
                     type="button"
@@ -286,14 +288,16 @@ export default function AboutContent({ testimonials: initialTestimonials = EMPTY
               <SectionCard title="Education" badge="Studies">
                 <div className="space-y-3.5">
                   {previewEducation.map((item) => (
-                    <article
-                      key={`${item.degree}-${item.institute}`}
-                      className="rounded-3xl border border-gray-200 bg-white p-3.5 dark:border-gray-700 dark:bg-[#111821] sm:p-4"
-                    >
-                      <h3 className="text-sm font-semibold text-gray-900 dark:text-white sm:text-base">{item.degree}</h3>
-                      <p className="mt-1 text-xs font-medium text-sky-700 dark:text-sky-300 sm:text-sm">{item.institute}</p>
-                      <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400 sm:text-xs">{item.period}</p>
-                    </article>
+                    <GlowContainer key={`${item.degree}-${item.institute}`}>
+                      < GlowBorder />
+                      <article
+                        className="relative z-10 w-full rounded-[calc(1.5rem-1.5px)] border border-gray-200 bg-white p-3.5 dark:border-gray-700 dark:bg-[#111821] sm:p-4 overflow-hidden"
+                      >
+                        <h3 className="text-sm font-semibold text-gray-900 dark:text-white sm:text-base">{item.degree}</h3>
+                        <p className="mt-1 text-xs font-medium text-sky-700 dark:text-sky-300 sm:text-sm">{item.institute}</p>
+                        <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400 sm:text-xs">{item.period}</p>
+                      </article>
+                    </GlowContainer>
                   ))}
                   <button
                     type="button"
@@ -328,7 +332,7 @@ export default function AboutContent({ testimonials: initialTestimonials = EMPTY
                   <GlowContainer key={item.id}>
                     <GlowBorder />
                     <article
-                      className="group relative z-10 h-full rounded-[calc(1.5rem-1px)] border border-gray-200/80 bg-[#f8fafc] p-4 dark:border-gray-700 dark:bg-[#111821] sm:p-5 flex flex-col overflow-hidden"
+                      className="group relative z-10 h-full rounded-[calc(1.5rem-1.5px)] border border-gray-200/80 bg-[#f8fafc] p-4 dark:border-gray-700 dark:bg-[#111821] sm:p-5 flex flex-col overflow-hidden"
                     >
                       <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#94a3b8] ring-1 ring-gray-200 dark:bg-[#0d1117] dark:text-[#cbd5e1] dark:ring-gray-600">
                         <FaQuoteLeft className="h-4 w-4" />
@@ -583,48 +587,52 @@ export default function AboutContent({ testimonials: initialTestimonials = EMPTY
             <div className="mt-5 max-h-[60vh] space-y-3 overflow-y-auto pr-1">
               {activeTab === "experience"
                 ? careersData.map((item) => (
-                    <article
-                      key={item.id}
-                      className="rounded-3xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-[#111821] cursor-pointer transition-all duration-200 hover:ring-2 hover:ring-gray-200 dark:hover:ring-gray-600"
-                      onClick={() => {
-                        setSelectedCareer(item);
-                        setIsTimelineOpen(false);
-                      }}
-                    >
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="flex items-start gap-3 min-w-0">
-                          <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-2xl border border-dashed border-gray-300 bg-gray-50 dark:border-gray-600 dark:bg-[#0d1117]">
-                            <Image
-                              src={item.logo}
-                              alt={`${item.company} logo`}
-                              fill
-                              className="object-cover"
-                            />
+                    <GlowContainer key={item.id}>
+                      <GlowBorder />
+                      <article
+                        className="relative z-10 w-full h-full rounded-[calc(1.5rem-1.5px)] border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-[#111821] cursor-pointer transition-all duration-200 hover:ring-2 hover:ring-gray-200 dark:hover:ring-gray-600 overflow-hidden"
+                        onClick={() => {
+                          setSelectedCareer(item);
+                          setIsTimelineOpen(false);
+                        }}
+                      >
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="flex items-start gap-3 min-w-0">
+                            <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-2xl border border-dashed border-gray-300 bg-gray-50 dark:border-gray-600 dark:bg-[#0d1117]">
+                              <Image
+                                src={item.logo}
+                                alt={`${item.company} logo`}
+                                fill
+                                className="object-cover"
+                              />
+                            </div>
+                            <div className="min-w-0">
+                              <h4 className="text-base font-semibold text-gray-900 dark:text-white">{item.role}</h4>
+                              <p className="mt-1 text-sm font-medium text-sky-700 dark:text-sky-300 truncate">{item.company}</p>
+                            </div>
                           </div>
-                          <div className="min-w-0">
-                            <h4 className="text-base font-semibold text-gray-900 dark:text-white">{item.role}</h4>
-                            <p className="mt-1 text-sm font-medium text-sky-700 dark:text-sky-300 truncate">{item.company}</p>
-                          </div>
+                          <span className={`inline-flex shrink-0 whitespace-nowrap items-center rounded-full border border-gray-200 bg-gray-50 px-2.5 py-1 text-[11px] font-semibold text-gray-600 dark:border-gray-600 dark:bg-[#0d1117] dark:text-gray-200 ${item.current ? "ring-1 ring-green-500 text-green-500" : ""}`}>
+                            {item.badge}
+                          </span>
                         </div>
-                        <span className={`inline-flex shrink-0 whitespace-nowrap items-center rounded-full border border-gray-200 bg-gray-50 px-2.5 py-1 text-[11px] font-semibold text-gray-600 dark:border-gray-600 dark:bg-[#0d1117] dark:text-gray-200 ${item.current ? "ring-1 ring-green-500 text-green-500" : ""}`}>
-                          {item.badge}
-                        </span>
-                      </div>
-                      <div className="mt-2 flex items-center justify-between gap-3">
-                        <p className="text-xs text-gray-500 dark:text-gray-400">{item.period}</p>
-                        <p className="text-xs font-semibold text-gray-600 dark:text-gray-300 text-right">View details</p>
-                      </div>
-                    </article>
+                        <div className="mt-2 flex items-center justify-between gap-3">
+                          <p className="text-xs text-gray-500 dark:text-gray-400">{item.period}</p>
+                          <p className="text-xs font-semibold text-gray-600 dark:text-gray-300 text-right">View details</p>
+                        </div>
+                      </article>
+                    </GlowContainer>
                   ))
                 : education.map((item) => (
-                    <article
-                      key={`${item.degree}-${item.institute}`}
-                      className="rounded-3xl border border-gray-200/80 bg-gray-50/70 p-4 dark:border-gray-700 dark:bg-[#111821]"
-                    >
-                      <h4 className="text-base font-semibold text-gray-900 dark:text-white">{item.degree}</h4>
-                      <p className="mt-1 text-sm font-medium text-sky-700 dark:text-sky-300">{item.institute}</p>
-                      <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{item.period}</p>
-                    </article>
+                    <GlowContainer key={`${item.degree}-${item.institute}`}>
+                      <GlowBorder />
+                      <article
+                        className="relative z-10 w-full rounded-[calc(1.5rem-1.5px)] border border-gray-200/80 bg-gray-50/70 p-4 dark:border-gray-700 dark:bg-[#111821] overflow-hidden"
+                      >
+                        <h4 className="text-base font-semibold text-gray-900 dark:text-white">{item.degree}</h4>
+                        <p className="mt-1 text-sm font-medium text-sky-700 dark:text-sky-300">{item.institute}</p>
+                        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{item.period}</p>
+                      </article>
+                    </GlowContainer>
                   ))}
             </div>
           </div>
