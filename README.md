@@ -1,4 +1,4 @@
-# 🍱 Bento-Style Personal Portfolio (Angular-Next)
+# 🍱 Bento-Style Personal Portfolio using Next.js
 
 A cutting-edge, interactive personal portfolio built with **Next.js 16 (App Router)** and **TypeScript**. This project features a high-performance **Bento Grid** layout with drag-and-drop capabilities, integrated with modern CMS and backend services.
 
